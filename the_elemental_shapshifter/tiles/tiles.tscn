@@ -21,4 +21,102 @@ frame = 1
 region = true
 region_rect = Rect2( 32, 0, 32, 32 )
 
+[node name="sand_top" type="Sprite" parent="."]
+
+transform/pos = Vector2( 144, 16 )
+texture = ExtResource( 1 )
+region = true
+region_rect = Rect2( 64, 0, 32, 32 )
+
+[node name="sand_left" type="Sprite" parent="."]
+
+transform/pos = Vector2( 208, 16 )
+texture = ExtResource( 1 )
+region = true
+region_rect = Rect2( 96, 0, 32, 32 )
+
+[node name="sand_right" type="Sprite" parent="."]
+
+transform/pos = Vector2( 272, 16 )
+texture = ExtResource( 1 )
+region = true
+region_rect = Rect2( 128, 0, 32, 32 )
+
+[node name="sand_bottom" type="Sprite" parent="."]
+
+transform/pos = Vector2( 336, 16 )
+texture = ExtResource( 1 )
+region = true
+region_rect = Rect2( 160, 0, 32, 32 )
+
+[node name="wall_top" type="Sprite" parent="."]
+
+transform/pos = Vector2( 16, 80 )
+texture = ExtResource( 1 )
+region = true
+region_rect = Rect2( 0, 32, 32, 32 )
+
+[node name="wall_right" type="Sprite" parent="."]
+
+transform/pos = Vector2( 80, 80 )
+texture = ExtResource( 1 )
+region = true
+region_rect = Rect2( 32, 32, 32, 32 )
+
+[node name="wall_bottom" type="Sprite" parent="."]
+
+transform/pos = Vector2( 144, 80 )
+texture = ExtResource( 1 )
+region = true
+region_rect = Rect2( 64, 32, 32, 32 )
+
+[node name="wall_left" type="Sprite" parent="."]
+
+transform/pos = Vector2( 208, 80 )
+texture = ExtResource( 1 )
+region = true
+region_rect = Rect2( 96, 32, 32, 32 )
+
+[node name="sand_top_right" type="Sprite" parent="."]
+
+transform/pos = Vector2( 272, 80 )
+texture = ExtResource( 1 )
+region = true
+region_rect = Rect2( 128, 32, 32, 32 )
+
+[node name="sand_top_left" type="Sprite" parent="."]
+
+transform/pos = Vector2( 336, 80 )
+texture = ExtResource( 1 )
+region = true
+region_rect = Rect2( 160, 32, 32, 32 )
+
+[node name="sand_bottom_right" type="Sprite" parent="."]
+
+transform/pos = Vector2( 16, 144 )
+texture = ExtResource( 1 )
+region = true
+region_rect = Rect2( 0, 64, 32, 32 )
+
+[node name="sand_bottom_left" type="Sprite" parent="."]
+
+transform/pos = Vector2( 80, 144 )
+texture = ExtResource( 1 )
+region = true
+region_rect = Rect2( 32, 64, 32, 32 )
+
+[node name="wall_top_left" type="Sprite" parent="."]
+
+transform/pos = Vector2( 144, 144 )
+texture = ExtResource( 1 )
+region = true
+region_rect = Rect2( 64, 64, 32, 32 )
+
+[node name="wall_top_right" type="Sprite" parent="."]
+
+transform/pos = Vector2( 208, 144 )
+texture = ExtResource( 1 )
+region = true
+region_rect = Rect2( 96, 64, 32, 32 )
+
 

@@ -1,5 +1,8 @@
 extends Node2D
 
+var fire_scene = preload("res://characters/fire.scn")
+var fire_nodes = Array()
+
 const FACE_UP = 0
 const FACE_DOWN = 1
 const FACE_LEFT = 2
@@ -56,6 +59,30 @@ func _fixed_process(delta):
 		spell_to_cast = handle_cast_input()
 		
 		if (spell_to_cast == MODE_FIRE && get_node("fire_cooldown").get_time_left() == 0):
+			var node = fire_scene.instance()
+			var current_pos = node.get_pos()
+			current_pos.x += Globals.get("TILE_SIZE")
+			node.set_pos(current_pos)
+			fire_nodes.push_back(node)
+			add_child(node);
+			var node = fire_scene.instance()
+			current_pos = node.get_pos()
+			current_pos.x -= Globals.get("TILE_SIZE")
+			node.set_pos(current_pos)
+			fire_nodes.push_back(node)
+			add_child(node);
+			var node = fire_scene.instance()
+			current_pos = node.get_pos()
+			current_pos.y += Globals.get("TILE_SIZE")
+			node.set_pos(current_pos)
+			fire_nodes.push_back(node)
+			add_child(node);
+			var node = fire_scene.instance()
+			current_pos = node.get_pos()
+			current_pos.y -= Globals.get("TILE_SIZE")
+			node.set_pos(current_pos)
+			fire_nodes.push_back(node)
+			add_child(node);
 			get_node("Timer").set_wait_time(MODE_FIRE_CAST_TIME)
 			get_node("Timer").start()
 			get_node("AnimationPlayer").play("cast_fire")
@@ -114,6 +141,9 @@ func _fixed_process(delta):
 			motion = motion * delta * speed 
 			move(motion)
 			
+	if !moving && current_mode != MODE_CAST:
+		get_node("AnimationPlayer").play("idle")
+			
 	if health > max_health:
 		health = max_health
 	
@@ -129,6 +159,9 @@ func move_player(direction):
 		target_pos.y -= Globals.get("TILE_SIZE")
 		actual_pos.y += Globals.get("TILE_SIZE")
 		facing = FACE_DOWN
+		
+		if get_node("AnimationPlayer").get_current_animation() && current_mode != MODE_CAST:
+			get_node("AnimationPlayer").play("walk_down")
 	if direction == MOVE_LEFT:
 		target_pos.x += Globals.get("TILE_SIZE")
 		actual_pos.x -= Globals.get("TILE_SIZE")
@@ -146,6 +179,10 @@ func timer_end():
 	get_node("AnimationPlayer").play("idle")
 	
 	if spell_to_cast == MODE_FIRE:
+		for i in range(0, fire_nodes.size()):
+			var node = fire_nodes[i]
+			node.queue_free()
+		fire_nodes.clear()
 		get_node("fire_cooldown").set_wait_time(MODE_FIRE_TIME_OUT)
 		get_node("fire_cooldown").start()
 	
