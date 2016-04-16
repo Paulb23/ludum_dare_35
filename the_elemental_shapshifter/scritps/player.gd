@@ -227,6 +227,8 @@ func move_player(direction):
 		moving = false
 	
 func collision(body):
+	if body.get_name() == "Player":
+		return
 	colliders.push_back(body)
 	
 func collision_end(body):
@@ -314,6 +316,8 @@ func set_paused(paused):
 		get_node("AnimatedSprite").show()
 		
 func hit(dmg):
+	if spell_to_cast == MODE_EARTH:
+		return
 	health -= dmg
 	
 	if health <= 0.0:

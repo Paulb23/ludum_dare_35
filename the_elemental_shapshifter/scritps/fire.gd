@@ -22,3 +22,4 @@ func collision_end(body):
 	
 func set_damage(damage):
 	self.dmg = damage
+	

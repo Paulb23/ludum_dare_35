@@ -3,7 +3,8 @@ extends Node2D
 const LEVEL_TIME = 180
 
 var enemies_scenes = [
-	load("res://characters/enemy/basic_meele_enemy.tscn")
+	load("res://characters/enemy/basic_meele_enemy.tscn"),
+	load("res://characters/enemy/basic_range_enemy.tscn")
 ]
 
 var current_round = -1

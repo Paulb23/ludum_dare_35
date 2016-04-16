@@ -47,6 +47,7 @@ enabled = true
 [node name="Player" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 368.272, 302.528 )
+collision/margin = 0.08
 
 [node name="gui" type="Node2D" parent="."]
 

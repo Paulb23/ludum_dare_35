@@ -1,7 +1,12 @@
-[gd_scene load_steps=13 format=1]
+[gd_scene load_steps=14 format=1]
 
 [ext_resource path="res://scritps/player.gd" type="Script" id=1]
 [ext_resource path="res://characters/player/player.png" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=11]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10, 10 )
 
 [sub_resource type="Animation" id=1]
 
@@ -102,6 +107,9 @@ extents = Vector2( 10, 10 )
 [node name="Player" type="KinematicBody2D"]
 
 input/pickable = false
+shapes/0/shape = SubResource( 11 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = true
 collision/layers = 1
 collision/mask = 1
 collision/margin = 0.08
@@ -186,5 +194,11 @@ process_mode = 1
 wait_time = 1.0
 one_shot = true
 autostart = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+shape = SubResource( 11 )
+trigger = true
+_update_shape_index = 0
 
 
