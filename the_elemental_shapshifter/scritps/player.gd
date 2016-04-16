@@ -77,6 +77,7 @@ func _fixed_process(delta):
 			var current_pos = node.get_pos()
 			current_pos.x += Globals.get("TILE_SIZE")
 			node.set_pos(current_pos)
+			node.set_damage(fire_dmg)
 			fire_nodes.push_back(node)
 			add_child(node);
 			var node = fire_scene.instance()
@@ -84,17 +85,20 @@ func _fixed_process(delta):
 			current_pos.x -= Globals.get("TILE_SIZE")
 			node.set_pos(current_pos)
 			fire_nodes.push_back(node)
+			node.set_damage(fire_dmg)
 			add_child(node);
 			var node = fire_scene.instance()
 			current_pos = node.get_pos()
 			current_pos.y += Globals.get("TILE_SIZE")
 			node.set_pos(current_pos)
 			fire_nodes.push_back(node)
+			node.set_damage(fire_dmg)
 			add_child(node);
 			var node = fire_scene.instance()
 			current_pos = node.get_pos()
 			current_pos.y -= Globals.get("TILE_SIZE")
 			node.set_pos(current_pos)
+			node.set_damage(fire_dmg)
 			fire_nodes.push_back(node)
 			add_child(node);
 			get_node("Timer").set_wait_time(MODE_FIRE_CAST_TIME)
