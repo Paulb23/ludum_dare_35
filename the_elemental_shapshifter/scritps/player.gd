@@ -142,7 +142,15 @@ func _fixed_process(delta):
 			move(motion)
 			
 	if !moving && current_mode != MODE_CAST:
-		get_node("AnimationPlayer").play("idle")
+		if facing == FACE_DOWN:
+			get_node("AnimatedSprite").set_frame(0)
+		if facing == FACE_UP:
+			get_node("AnimatedSprite").set_frame(8)
+		if facing == FACE_LEFT:
+			get_node("AnimatedSprite").set_frame(19)
+		if facing == FACE_RIGHT:
+			get_node("AnimatedSprite").set_frame(12)
+	
 			
 	if health > max_health:
 		health = max_health
@@ -155,6 +163,9 @@ func move_player(direction):
 		target_pos.y += Globals.get("TILE_SIZE")
 		actual_pos.y -= Globals.get("TILE_SIZE")
 		facing = FACE_UP
+		
+		if get_node("AnimationPlayer").get_current_animation() && current_mode != MODE_CAST:
+			get_node("AnimationPlayer").play("walk_up")
 	if direction == MOVE_DOWN:
 		target_pos.y -= Globals.get("TILE_SIZE")
 		actual_pos.y += Globals.get("TILE_SIZE")
@@ -166,10 +177,16 @@ func move_player(direction):
 		target_pos.x += Globals.get("TILE_SIZE")
 		actual_pos.x -= Globals.get("TILE_SIZE")
 		facing = FACE_LEFT
+		
+		if get_node("AnimationPlayer").get_current_animation() && current_mode != MODE_CAST:
+			get_node("AnimationPlayer").play("walk_left")
 	if direction == MOVE_RIGHT:
 		target_pos.x -= Globals.get("TILE_SIZE")
 		actual_pos.x += Globals.get("TILE_SIZE")
 		facing = FACE_RIGHT
+		
+		if get_node("AnimationPlayer").get_current_animation() && current_mode != MODE_CAST:
+			get_node("AnimationPlayer").play("walk_right")
 		
 	if is_tile_solid(get_tile_type(actual_pos)):
 		moving = false

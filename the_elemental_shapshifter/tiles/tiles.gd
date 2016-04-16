@@ -10,5 +10,9 @@ func get_tile_type(pos):
 
 func _ready():
 	solidTiles.push_back(1)
-
-
+	solidTiles.push_back(6)
+	solidTiles.push_back(7)
+	solidTiles.push_back(8)
+	solidTiles.push_back(9)
+	solidTiles.push_back(14)
+	solidTiles.push_back(15)

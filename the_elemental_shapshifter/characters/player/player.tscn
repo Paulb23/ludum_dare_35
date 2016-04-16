@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=1]
+[gd_scene load_steps=12 format=1]
 
 [ext_resource path="res://scritps/player.gd" type="Script" id=1]
 [ext_resource path="res://characters/player/player.png" type="Texture" id=2]
@@ -58,13 +58,46 @@ tracks/0/keys = { "cont":false, "times":FloatArray( 0 ), "transitions":FloatArra
 [sub_resource type="Animation" id=6]
 
 resource/name = "walk_down"
-length = 1.0
+length = 0.25
 loop = false
 step = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("AnimatedSprite:frame")
 tracks/0/interp = 1
-tracks/0/keys = { "cont":true, "times":FloatArray( 0, 1 ), "transitions":FloatArray( 1, 1 ), "values":[ 1, 4 ] }
+tracks/0/keys = { "cont":true, "times":FloatArray( 0, 0.2 ), "transitions":FloatArray( 1, 1 ), "values":[ 1, 4 ] }
+
+[sub_resource type="Animation" id=9]
+
+resource/name = "walk_left"
+length = 0.25
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:frame")
+tracks/0/interp = 1
+tracks/0/keys = { "cont":true, "times":FloatArray( 0, 0.2 ), "transitions":FloatArray( 1, 1 ), "values":[ 19, 16 ] }
+
+[sub_resource type="Animation" id=8]
+
+resource/name = "walk_right"
+length = 0.25
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:frame")
+tracks/0/interp = 1
+tracks/0/keys = { "cont":true, "times":FloatArray( 0, 0.25 ), "transitions":FloatArray( 1, 1 ), "values":[ 12, 15 ] }
+
+[sub_resource type="Animation" id=7]
+
+resource/name = "walk_up"
+length = 0.25
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:frame")
+tracks/0/interp = 1
+tracks/0/keys = { "cont":true, "times":FloatArray( 0, 0.2 ), "transitions":FloatArray( 1, 1 ), "values":[ 8, 11 ] }
 
 [node name="Player" type="KinematicBody2D"]
 
@@ -79,7 +112,7 @@ script/script = ExtResource( 1 )
 texture = ExtResource( 2 )
 vframes = 8
 hframes = 8
-frame = 33
+frame = 19
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
@@ -92,6 +125,9 @@ anims/cast_fire = SubResource( 3 )
 anims/cast_water = SubResource( 4 )
 anims/idle = SubResource( 5 )
 anims/walk_down = SubResource( 6 )
+anims/walk_left = SubResource( 9 )
+anims/walk_right = SubResource( 8 )
+anims/walk_up = SubResource( 7 )
 playback/active = true
 playback/speed = 1.0
 blend_times = [  ]
