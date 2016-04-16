@@ -1,6 +1,6 @@
 extends Node2D
 
-var fire_scene = preload("res://characters/fire.scn")
+var fire_scene = preload("res://characters/fire.tscn")
 var fire_nodes = Array()
 
 const FACE_UP = 0
