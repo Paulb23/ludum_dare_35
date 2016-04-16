@@ -45,6 +45,11 @@ var current_mode = 0
 var spell_to_cast = 6
 
 var speed = 10
+
+var default_move_time = 15
+var air_time_to_move = 20
+var water_time_to_move = 17
+
 var time_to_move = 15;
 var moving = false
 var facing = 1
@@ -111,6 +116,7 @@ func _fixed_process(delta):
 			get_node("Timer").set_wait_time(MODE_WATER_CAST_TIME)
 			get_node("Timer").start()
 			get_node("AnimationPlayer").play("cast_water")
+			time_to_move = water_time_to_move
 			current_dmg = water_damage
 			current_mode = MODE_CAST
 			
@@ -125,6 +131,7 @@ func _fixed_process(delta):
 			get_node("Timer").set_wait_time(MODE_AIR_CAST_TIME)
 			get_node("Timer").start()
 			get_node("AnimationPlayer").play("cast_air")
+			time_to_move = air_time_to_move
 			current_dmg = air_damage
 			current_mode = MODE_CAST 
 		
@@ -247,6 +254,7 @@ func timer_end():
 		get_node("air_cooldown").set_wait_time(MODE_AIR_TIME_OUT)
 		get_node("air_cooldown").start()
 	
+	time_to_move = default_move_time
 	spell_to_cast = MODE_CAST_NONE
 	current_mode = MODE_NORMAL
 	
