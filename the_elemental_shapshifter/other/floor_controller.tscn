@@ -1,12 +1,11 @@
-[gd_scene load_steps=9 format=1]
+[gd_scene load_steps=8 format=1]
 
 [ext_resource path="res://scritps/game_controller.gd" type="Script" id=1]
 [ext_resource path="res://tiles/tiles.tres" type="TileSet" id=2]
 [ext_resource path="res://tiles/tiles.gd" type="Script" id=3]
-[ext_resource path="res://characters/enemy/basic_meele_enemy.tscn" type="PackedScene" id=4]
-[ext_resource path="res://characters/player/player.tscn" type="PackedScene" id=5]
-[ext_resource path="res://scritps/gui.gd" type="Script" id=6]
-[ext_resource path="res://scritps/between_round_shop.gd" type="Script" id=7]
+[ext_resource path="res://characters/player/player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scritps/gui.gd" type="Script" id=5]
+[ext_resource path="res://scritps/between_round_shop.gd" type="Script" id=6]
 
 [sub_resource type="NavigationPolygon" id=1]
 
@@ -45,24 +44,13 @@ script/script = ExtResource( 3 )
 navpoly = SubResource( 1 )
 enabled = true
 
-[node name="basic_meele_enemy" parent="navmesh" instance=ExtResource( 4 )]
-
-transform/pos = Vector2( 109.811, 368.506 )
-collision/margin = 0.08
-
-[node name="basic_meele_enemy1" parent="navmesh" instance=ExtResource( 4 )]
-
-transform/pos = Vector2( 637.812, 144.505 )
-collision/margin = 0.08
-
-[node name="Player" parent="." instance=ExtResource( 5 )]
+[node name="Player" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 368.272, 302.528 )
-collision/margin = 0.08
 
 [node name="gui" type="Node2D" parent="."]
 
-script/script = ExtResource( 6 )
+script/script = ExtResource( 5 )
 
 [node name="fire_cooldown_text" type="Label" parent="gui"]
 
@@ -155,10 +143,17 @@ wait_time = 1.0
 one_shot = true
 autostart = false
 
+[node name="spawn_timer" type="Timer" parent="."]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = true
+autostart = false
+
 [node name="between_rounds_shop" type="Node2D" parent="."]
 
 transform/pos = Vector2( 146.261, -7.75625 )
-script/script = ExtResource( 7 )
+script/script = ExtResource( 6 )
 
 [node name="start_round_button" type="Button" parent="between_rounds_shop"]
 

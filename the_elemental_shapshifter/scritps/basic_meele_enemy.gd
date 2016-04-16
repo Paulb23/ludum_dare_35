@@ -23,6 +23,8 @@ var attack_speed = 1.0;
 var max_health = 100
 var health = 100
 
+var dead = false
+
 var target_pos = get_pos();
 var actual_pos = get_pos();
 
@@ -132,5 +134,7 @@ func timer_end():
 func hit(dmg):
 	health -= dmg
 	
-	if health <= 0.0:
+	if health <= 0.0 && not dead:
+		dead = true
+		get_parent().get_parent().kill_enemy();
 		self.queue_free()
