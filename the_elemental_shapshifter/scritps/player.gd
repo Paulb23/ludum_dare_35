@@ -19,10 +19,15 @@ const MODE_AIR = 4
 const MODE_CAST = 5
 const MODE_CAST_NONE = 6
 
-const MODE_FIRE_CAST_TIME = 0
-const MODE_WATER_CAST_TIME = 0
+const MODE_FIRE_TIME_OUT = 1.0
+const MODE_WATER_TIME_OUT = 1.0
+const MODE_EARTH_TIME_OUT = 1.0
+const MODE_AIR_TIME_OUT = 1.0
+
+const MODE_FIRE_CAST_TIME = 1.0
+const MODE_WATER_CAST_TIME = 1.0
 const MODE_EARTH_CAST_TIME = 1.0
-const MODE_AIR_CAST_TIME = 0
+const MODE_AIR_CAST_TIME = 1.5
 
 var current_mode = 0
 var spell_to_cast = 6
@@ -30,6 +35,7 @@ var spell_to_cast = 6
 var speed = 10
 var time_to_move = 15;
 var moving = false
+var facing = 1
 
 var target_pos = get_pos();
 var actual_pos = get_pos();
@@ -43,50 +49,103 @@ func _fixed_process(delta):
 	if current_mode == MODE_NORMAL:
 		spell_to_cast = handle_cast_input()
 		
-		if (spell_to_cast != MODE_CAST_NONE):
+		if (spell_to_cast == MODE_FIRE && get_node("fire_cooldown").get_time_left() == 0):
+			get_node("Timer").set_wait_time(MODE_FIRE_CAST_TIME)
+			get_node("Timer").start()
+			get_node("AnimationPlayer").play("cast_fire")
 			current_mode = MODE_CAST
 			
-		if (spell_to_cast == MODE_EARTH):
+		if (spell_to_cast == MODE_WATER && get_node("water_cooldown").get_time_left() == 0):
+			get_node("Timer").set_wait_time(MODE_WATER_CAST_TIME)
+			get_node("Timer").start()
+			get_node("AnimationPlayer").play("cast_water")
+			current_mode = MODE_CAST
+			
+		if (spell_to_cast == MODE_EARTH && get_node("earth_cooldown").get_time_left() == 0):
 			get_node("Timer").set_wait_time(MODE_EARTH_CAST_TIME)
 			get_node("Timer").start()
 			get_node("AnimationPlayer").play("cast_earth")
+			current_mode = MODE_CAST
+		
+		if (spell_to_cast == MODE_AIR && get_node("air_cooldown").get_time_left() == 0):
+			get_node("Timer").set_wait_time(MODE_AIR_CAST_TIME)
+			get_node("Timer").start()
+			get_node("AnimationPlayer").play("cast_air")
+			current_mode = MODE_CAST 
+		
+			
+	if current_mode == MODE_CAST:
+		if (spell_to_cast == MODE_WATER):
+			if !moving:
+				move_player(facing)
+				
+		if (spell_to_cast == MODE_AIR):
+			if !moving:
+				var direction = handle_direction_input()
+				
+				if direction != MOVE_NONE:
+					move_player(direction)
 	
 	# ugly but Meh!
 	for i in range(0, time_to_move):
 		if get_pos().distance_to(actual_pos) <= 0.1:
 			moving = false
 		
-		if !moving and current_mode != MODE_EARTH and current_mode != MODE_CAST:
+		if !moving and current_mode != MODE_CAST:
 			var direction = handle_direction_input()
 			
 			if direction != MOVE_NONE:
-				moving = true
-				target_pos = get_pos()
-				actual_pos = get_pos()
-				if direction == MOVE_UP:
-					target_pos.y += Globals.get("TILE_SIZE")
-					actual_pos.y -= Globals.get("TILE_SIZE")
-				if direction == MOVE_DOWN:
-					target_pos.y -= Globals.get("TILE_SIZE")
-					actual_pos.y += Globals.get("TILE_SIZE")
-				if direction == MOVE_LEFT:
-					target_pos.x += Globals.get("TILE_SIZE")
-					actual_pos.x -= Globals.get("TILE_SIZE")
-				if direction == MOVE_RIGHT:
-					target_pos.x -= Globals.get("TILE_SIZE")
-					actual_pos.x += Globals.get("TILE_SIZE")
-		
-				if is_tile_solid(get_tile_type(actual_pos)):
-					moving = false
+				move_player(direction)
 		if moving:
 			var motion = get_pos() - target_pos;
 			motion = motion.normalized()
 			motion = motion * delta * speed 
 			move(motion)
 	
+func move_player(direction):	
+	moving = true
+	target_pos = get_pos()
+	actual_pos = get_pos()
+	if direction == MOVE_UP:
+		target_pos.y += Globals.get("TILE_SIZE")
+		actual_pos.y -= Globals.get("TILE_SIZE")
+		facing = FACE_UP
+	if direction == MOVE_DOWN:
+		target_pos.y -= Globals.get("TILE_SIZE")
+		actual_pos.y += Globals.get("TILE_SIZE")
+		facing = FACE_DOWN
+	if direction == MOVE_LEFT:
+		target_pos.x += Globals.get("TILE_SIZE")
+		actual_pos.x -= Globals.get("TILE_SIZE")
+		facing = FACE_LEFT
+	if direction == MOVE_RIGHT:
+		target_pos.x -= Globals.get("TILE_SIZE")
+		actual_pos.x += Globals.get("TILE_SIZE")
+		facing = FACE_RIGHT
+		
+	if is_tile_solid(get_tile_type(actual_pos)):
+		moving = false
+
 func timer_end():
 	get_node("Timer").stop()
 	get_node("AnimationPlayer").play("idle")
+	
+	if spell_to_cast == MODE_FIRE:
+		get_node("fire_cooldown").set_wait_time(MODE_FIRE_TIME_OUT)
+		get_node("fire_cooldown").start()
+	
+	if spell_to_cast == MODE_WATER:
+		get_node("water_cooldown").set_wait_time(MODE_WATER_TIME_OUT)
+		get_node("water_cooldown").start()
+	
+	if spell_to_cast == MODE_EARTH:
+		get_node("earth_cooldown").set_wait_time(MODE_EARTH_TIME_OUT)
+		get_node("earth_cooldown").start()
+		
+	if spell_to_cast == MODE_AIR:
+		get_node("air_cooldown").set_wait_time(MODE_AIR_TIME_OUT)
+		get_node("air_cooldown").start()
+	
 	current_mode = MODE_NORMAL
 	
 func handle_direction_input():

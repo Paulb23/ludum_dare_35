@@ -92,7 +92,35 @@ autoplay = "idle"
 
 process_mode = 1
 wait_time = 1.0
-one_shot = false
+one_shot = true
+autostart = false
+
+[node name="earth_cooldown" type="Timer" parent="."]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = true
+autostart = false
+
+[node name="water_cooldown" type="Timer" parent="."]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = true
+autostart = false
+
+[node name="air_cooldown" type="Timer" parent="."]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = true
+autostart = false
+
+[node name="fire_cooldown" type="Timer" parent="."]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = true
 autostart = false
 
 
