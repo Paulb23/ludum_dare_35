@@ -5,7 +5,7 @@ func _ready():
 	pass
 	
 func start_round():
-	get_parent().timer_start()
+	get_parent().round_start()
 	
 func show_shop():
 	get_node("start_round_button").show()

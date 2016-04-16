@@ -36,6 +36,11 @@ const MODE_WATER_CAST_TIME = 1.0
 const MODE_EARTH_CAST_TIME = 1.0
 const MODE_AIR_CAST_TIME = 1.5
 
+var fire_dmg = 1
+var water_damage = 1
+var earth_damage = 0
+var air_damage = 1
+
 var current_mode = 0
 var spell_to_cast = 6
 
@@ -46,13 +51,18 @@ var facing = 1
 
 var max_health = 100
 var health = 100
+var current_dmg = 0
 
 var target_pos = get_pos();
 var actual_pos = get_pos();
 
+var colliders = Array()
+
 func _ready():
 	set_fixed_process(true)
 	get_node("Timer").connect("timeout", self, "timer_end")
+	get_node("Area2D").connect("body_enter", self, "collision")
+	get_node("Area2D").connect("body_exit", self, "collision_end")
 	
 func _fixed_process(delta):
 	
@@ -90,30 +100,34 @@ func _fixed_process(delta):
 			get_node("Timer").set_wait_time(MODE_FIRE_CAST_TIME)
 			get_node("Timer").start()
 			get_node("AnimationPlayer").play("cast_fire")
+			current_dmg = fire_dmg
 			current_mode = MODE_CAST
 			
 		if (spell_to_cast == MODE_WATER && get_node("water_cooldown").get_time_left() == 0):
 			get_node("Timer").set_wait_time(MODE_WATER_CAST_TIME)
 			get_node("Timer").start()
 			get_node("AnimationPlayer").play("cast_water")
+			current_dmg = water_damage
 			current_mode = MODE_CAST
 			
 		if (spell_to_cast == MODE_EARTH && get_node("earth_cooldown").get_time_left() == 0):
 			get_node("Timer").set_wait_time(MODE_EARTH_CAST_TIME)
 			get_node("Timer").start()
 			get_node("AnimationPlayer").play("cast_earth")
+			current_dmg = earth_damage
 			current_mode = MODE_CAST
 		
 		if (spell_to_cast == MODE_AIR && get_node("air_cooldown").get_time_left() == 0):
 			get_node("Timer").set_wait_time(MODE_AIR_CAST_TIME)
 			get_node("Timer").start()
 			get_node("AnimationPlayer").play("cast_air")
+			current_dmg = air_damage
 			current_mode = MODE_CAST 
 		
 			
 	if current_mode == MODE_CAST:
 		if (spell_to_cast == MODE_FIRE):
-			health -= MODE_FIRE_SELF_DAMAGE
+			hit(MODE_FIRE_SELF_DAMAGE)
 			
 		if (spell_to_cast == MODE_WATER):
 			if !moving:
@@ -128,6 +142,8 @@ func _fixed_process(delta):
 				
 				if direction != MOVE_NONE:
 					move_player(direction)
+	else:
+		current_dmg = 0
 	
 	# ugly but Meh!
 	for i in range(0, time_to_move):
@@ -144,7 +160,7 @@ func _fixed_process(delta):
 			motion = motion.normalized()
 			motion = motion * delta * speed 
 			move(motion)
-			
+
 	if !moving && current_mode != MODE_CAST:
 		if facing == FACE_DOWN:
 			get_node("AnimatedSprite").set_frame(0)
@@ -158,6 +174,10 @@ func _fixed_process(delta):
 			
 	if health > max_health:
 		health = max_health
+		
+	if colliders.size() > 0:
+		for i in range(0, colliders.size()):
+			colliders[i].hit(current_dmg)
 	
 func move_player(direction):	
 	moving = true
@@ -194,7 +214,13 @@ func move_player(direction):
 		
 	if is_tile_solid(get_tile_type(actual_pos)):
 		moving = false
-
+	
+func collision(body):
+	colliders.push_back(body)
+	
+func collision_end(body):
+	colliders.remove(colliders.find(body))
+	
 func timer_end():
 	get_node("Timer").stop()
 	get_node("AnimationPlayer").play("idle")
@@ -272,3 +298,9 @@ func set_paused(paused):
 	else:
 		current_mode = MODE_NORMAL
 		get_node("AnimatedSprite").show()
+		
+func hit(dmg):
+	health -= dmg
+	
+	if health <= 0.0:
+		get_parent().player_died()

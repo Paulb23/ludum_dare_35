@@ -1,11 +1,10 @@
-[gd_scene load_steps=12 format=1]
+[gd_scene load_steps=13 format=1]
 
 [ext_resource path="res://scritps/player.gd" type="Script" id=1]
 [ext_resource path="res://characters/player/player.png" type="Texture" id=2]
 
 [sub_resource type="Animation" id=1]
 
-resource/name = "cast_air"
 length = 1.0
 loop = false
 step = 0.1
@@ -16,7 +15,6 @@ tracks/0/keys = { "cont":false, "times":FloatArray( 0 ), "transitions":FloatArra
 
 [sub_resource type="Animation" id=2]
 
-resource/name = "cast_earth"
 length = 1.0
 loop = false
 step = 0.1
@@ -57,7 +55,6 @@ tracks/0/keys = { "cont":false, "times":FloatArray( 0 ), "transitions":FloatArra
 
 [sub_resource type="Animation" id=6]
 
-resource/name = "walk_down"
 length = 0.25
 loop = false
 step = 0.1
@@ -66,7 +63,7 @@ tracks/0/path = NodePath("AnimatedSprite:frame")
 tracks/0/interp = 1
 tracks/0/keys = { "cont":true, "times":FloatArray( 0, 0.2 ), "transitions":FloatArray( 1, 1 ), "values":[ 1, 4 ] }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=7]
 
 resource/name = "walk_left"
 length = 0.25
@@ -79,7 +76,6 @@ tracks/0/keys = { "cont":true, "times":FloatArray( 0, 0.2 ), "transitions":Float
 
 [sub_resource type="Animation" id=8]
 
-resource/name = "walk_right"
 length = 0.25
 loop = false
 step = 0.1
@@ -88,9 +84,8 @@ tracks/0/path = NodePath("AnimatedSprite:frame")
 tracks/0/interp = 1
 tracks/0/keys = { "cont":true, "times":FloatArray( 0, 0.25 ), "transitions":FloatArray( 1, 1 ), "values":[ 12, 15 ] }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=9]
 
-resource/name = "walk_up"
 length = 0.25
 loop = false
 step = 0.1
@@ -98,6 +93,11 @@ tracks/0/type = "value"
 tracks/0/path = NodePath("AnimatedSprite:frame")
 tracks/0/interp = 1
 tracks/0/keys = { "cont":true, "times":FloatArray( 0, 0.2 ), "transitions":FloatArray( 1, 1 ), "values":[ 8, 11 ] }
+
+[sub_resource type="RectangleShape2D" id=10]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10, 10 )
 
 [node name="Player" type="KinematicBody2D"]
 
@@ -112,7 +112,7 @@ script/script = ExtResource( 1 )
 texture = ExtResource( 2 )
 vframes = 8
 hframes = 8
-frame = 19
+frame = 4
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
@@ -125,13 +125,32 @@ anims/cast_fire = SubResource( 3 )
 anims/cast_water = SubResource( 4 )
 anims/idle = SubResource( 5 )
 anims/walk_down = SubResource( 6 )
-anims/walk_left = SubResource( 9 )
+anims/walk_left = SubResource( 7 )
 anims/walk_right = SubResource( 8 )
-anims/walk_up = SubResource( 7 )
+anims/walk_up = SubResource( 9 )
 playback/active = true
 playback/speed = 1.0
 blend_times = [  ]
 autoplay = "idle"
+
+[node name="Area2D" type="Area2D" parent="."]
+
+input/pickable = true
+shapes/0/shape = SubResource( 10 )
+shapes/0/transform = Matrix32( 1.5, -0, 0, 1.5, -1, 0 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+
+transform/pos = Vector2( -1, 0 )
+transform/scale = Vector2( 1.5, 1.5 )
+shape = SubResource( 10 )
+trigger = false
+_update_shape_index = 0
 
 [node name="Timer" type="Timer" parent="."]
 
