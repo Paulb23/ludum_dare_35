@@ -49,6 +49,8 @@ func round_start():
 	in_round = true
 	max_enemies = 5 * current_round
 	
+	if max_enemies <= 0:
+		max_enemies = 5 
 	if max_enemies >= 20:
 		max_enemies = 20
 	timer_start()
