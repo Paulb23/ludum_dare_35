@@ -21,6 +21,7 @@ const MODE_EARTH = 3
 const MODE_AIR = 4
 const MODE_CAST = 5
 const MODE_CAST_NONE = 6
+const MODE_PAUSED = 7
 
 const MODE_FIRE_SELF_DAMAGE = 0.1;
 const MODE_EARTH_SELF_HEAL = 0.1;
@@ -54,6 +55,9 @@ func _ready():
 	get_node("Timer").connect("timeout", self, "timer_end")
 	
 func _fixed_process(delta):
+	
+	if current_mode == MODE_PAUSED:
+		return
 	
 	if current_mode == MODE_NORMAL:
 		spell_to_cast = handle_cast_input()
@@ -196,10 +200,7 @@ func timer_end():
 	get_node("AnimationPlayer").play("idle")
 	
 	if spell_to_cast == MODE_FIRE:
-		for i in range(0, fire_nodes.size()):
-			var node = fire_nodes[i]
-			node.queue_free()
-		fire_nodes.clear()
+		remove_fire()
 		get_node("fire_cooldown").set_wait_time(MODE_FIRE_TIME_OUT)
 		get_node("fire_cooldown").start()
 	
@@ -216,6 +217,12 @@ func timer_end():
 		get_node("air_cooldown").start()
 	
 	current_mode = MODE_NORMAL
+	
+func remove_fire():
+	for i in range(0, fire_nodes.size()):
+			var node = fire_nodes[i]
+			node.queue_free()
+	fire_nodes.clear()
 	
 func handle_direction_input():
 	if ( Input.is_action_pressed("move_up") ):
@@ -256,3 +263,12 @@ func get_face():
 	
 func get_health():
 	return self.health
+	
+func set_paused(paused):
+	if (paused):
+		current_mode = MODE_PAUSED
+		remove_fire()
+		get_node("AnimatedSprite").hide()
+	else:
+		current_mode = MODE_NORMAL
+		get_node("AnimatedSprite").show()
