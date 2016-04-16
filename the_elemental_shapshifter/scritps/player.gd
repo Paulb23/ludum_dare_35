@@ -1,6 +1,6 @@
 extends Node2D
 
-var fire_scene = preload("res://characters/fire.tscn")
+var fire_scene = load("res://characters/fire.tscn")
 var fire_nodes = Array()
 
 const FACE_UP = 0
@@ -229,6 +229,7 @@ func timer_end():
 	get_node("Timer").stop()
 	get_node("AnimationPlayer").play("idle")
 	
+	
 	if spell_to_cast == MODE_FIRE:
 		remove_fire()
 		get_node("fire_cooldown").set_wait_time(MODE_FIRE_TIME_OUT)
@@ -246,6 +247,7 @@ func timer_end():
 		get_node("air_cooldown").set_wait_time(MODE_AIR_TIME_OUT)
 		get_node("air_cooldown").start()
 	
+	spell_to_cast = MODE_CAST_NONE
 	current_mode = MODE_NORMAL
 	
 func remove_fire():

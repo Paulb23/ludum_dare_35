@@ -17,10 +17,11 @@ var time_to_move = 15;
 var moving = false
 var facing = 1
 
+var damage = 1;
+var attack_speed = 1.0;
+
 var max_health = 100
 var health = 100
-
-var take_damage = false
 
 var target_pos = get_pos();
 var actual_pos = get_pos();
@@ -59,6 +60,11 @@ func _fixed_process(delta):
 						direction = MOVE_UP
 					elif next_point.y > get_pos().y:
 						direction = MOVE_DOWN
+				else:
+					if (get_node("attack_timer").get_time_left() == 0 && get_parent().get_parent().get_node("Player").get_spell() != get_parent().get_parent().get_node("Player").MODE_EARTH):
+						get_parent().get_parent().get_node("Player").hit(damage)
+						get_node("attack_timer").set_wait_time(attack_speed)
+						get_node("attack_timer").start()
 								
 				if direction != MOVE_NONE:
 					move_node(direction)
