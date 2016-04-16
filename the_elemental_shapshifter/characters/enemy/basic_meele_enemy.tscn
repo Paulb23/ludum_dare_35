@@ -1,7 +1,12 @@
-[gd_scene load_steps=8 format=1]
+[gd_scene load_steps=9 format=1]
 
 [ext_resource path="res://scritps/basic_meele_enemy.gd" type="Script" id=1]
 [ext_resource path="res://characters/enemy/basic_meele_enemy.png" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10, 10 )
 
 [sub_resource type="Animation" id=2]
 
@@ -54,6 +59,9 @@ extents = Vector2( 10, 10 )
 [node name="basic_meele_enemy" type="KinematicBody2D"]
 
 input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = true
 collision/layers = 1
 collision/mask = 1
 collision/margin = 0.08
@@ -98,7 +106,7 @@ autostart = false
 
 input/pickable = true
 shapes/0/shape = SubResource( 6 )
-shapes/0/transform = Matrix32( 1, -0, 0, 1, 0, 0 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -113,6 +121,7 @@ _update_shape_index = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 
+shape = SubResource( 1 )
 trigger = true
 _update_shape_index = 0
 
