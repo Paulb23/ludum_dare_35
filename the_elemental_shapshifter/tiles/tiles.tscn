@@ -8,7 +8,17 @@
 
 transform/pos = Vector2( 16, 16 )
 texture = ExtResource( 1 )
+region = true
+region_rect = Rect2( 0, 0, 32, 32 )
+
+[node name="wall" type="Sprite" parent="."]
+
+transform/pos = Vector2( 80, 16 )
+texture = ExtResource( 1 )
 vframes = 6
 hframes = 6
+frame = 1
+region = true
+region_rect = Rect2( 32, 0, 32, 32 )
 
 

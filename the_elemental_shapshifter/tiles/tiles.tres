@@ -7,9 +7,17 @@
 0/name = "sand"
 0/texture = ExtResource( 1 )
 0/tex_offset = Vector2( 0, 0 )
-0/region = Rect2( 0, 0, 0, 0 )
-0/occluder_offset = Vector2( 96, 96 )
-0/navigation_offset = Vector2( 96, 96 )
+0/region = Rect2( 0, 0, 32, 32 )
+0/occluder_offset = Vector2( 16, 16 )
+0/navigation_offset = Vector2( 16, 16 )
 0/shape_offset = Vector2( 0, 0 )
 0/shapes = [  ]
+1/name = "wall"
+1/texture = ExtResource( 1 )
+1/tex_offset = Vector2( 0, 0 )
+1/region = Rect2( 32, 0, 32, 32 )
+1/occluder_offset = Vector2( 16, 16 )
+1/navigation_offset = Vector2( 16, 16 )
+1/shape_offset = Vector2( 0, 0 )
+1/shapes = [  ]
 
