@@ -15,23 +15,23 @@ tracks/0/keys = { "cont":false, "times":FloatArray( 0 ), "transitions":FloatArra
 
 [sub_resource type="Animation" id=2]
 
-length = 1.0
-loop = false
+length = 0.5
+loop = true
 step = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("AnimatedSprite:frame")
 tracks/0/interp = 1
-tracks/0/keys = { "cont":false, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ 48 ] }
+tracks/0/keys = { "cont":true, "times":FloatArray( 0, 0.5 ), "transitions":FloatArray( 1, 1 ), "values":[ 48, 51 ] }
 
 [sub_resource type="Animation" id=3]
 
-length = 1.0
-loop = false
+length = 0.5
+loop = true
 step = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("AnimatedSprite:frame")
 tracks/0/interp = 1
-tracks/0/keys = { "cont":false, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ 32 ] }
+tracks/0/keys = { "cont":true, "times":FloatArray( 0, 0.5 ), "transitions":FloatArray( 1, 1 ), "values":[ 32, 35 ] }
 
 [sub_resource type="Animation" id=4]
 
@@ -112,7 +112,7 @@ script/script = ExtResource( 1 )
 texture = ExtResource( 2 )
 vframes = 8
 hframes = 8
-frame = 4
+frame = 52
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
@@ -137,7 +137,7 @@ autoplay = "idle"
 
 input/pickable = true
 shapes/0/shape = SubResource( 10 )
-shapes/0/transform = Matrix32( 1.5, -0, 0, 1.5, -1, 0 )
+shapes/0/transform = Matrix32( 1.5, 0, 0, 1.5, -1, 0 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
