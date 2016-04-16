@@ -19,6 +19,9 @@ const MODE_AIR = 4
 const MODE_CAST = 5
 const MODE_CAST_NONE = 6
 
+const MODE_FIRE_SELF_DAMAGE = 0.1;
+const MODE_EARTH_SELF_HEAL = 0.1;
+
 const MODE_FIRE_TIME_OUT = 1.0
 const MODE_WATER_TIME_OUT = 1.0
 const MODE_EARTH_TIME_OUT = 1.0
@@ -36,6 +39,9 @@ var speed = 10
 var time_to_move = 15;
 var moving = false
 var facing = 1
+
+var max_health = 100
+var health = 100
 
 var target_pos = get_pos();
 var actual_pos = get_pos();
@@ -75,10 +81,16 @@ func _fixed_process(delta):
 		
 			
 	if current_mode == MODE_CAST:
+		if (spell_to_cast == MODE_FIRE):
+			health -= MODE_FIRE_SELF_DAMAGE
+			
 		if (spell_to_cast == MODE_WATER):
 			if !moving:
 				move_player(facing)
 				
+		if (spell_to_cast == MODE_EARTH):
+			health += MODE_EARTH_SELF_HEAL
+			
 		if (spell_to_cast == MODE_AIR):
 			if !moving:
 				var direction = handle_direction_input()
@@ -101,6 +113,9 @@ func _fixed_process(delta):
 			motion = motion.normalized()
 			motion = motion * delta * speed 
 			move(motion)
+			
+	if health > max_health:
+		health = max_health
 	
 func move_player(direction):	
 	moving = true
@@ -171,13 +186,19 @@ func handle_cast_input():
 	return MODE_CAST_NONE
 
 func is_tile_solid(tile):	
-	return get_parent().get_node("map").is_tile_solid(tile);
+	return get_parent().get_node("map").is_tile_solid(tile)
 	
 func get_tile_type(pos):
-	return get_parent().get_node("map").get_tile_type(pos);
+	return get_parent().get_node("map").get_tile_type(pos)
+	
+func get_spell():
+	return self.spell_to_cast
 	
 func get_mode():
-	return self.current_mode;
+	return self.current_mode
 	
 func get_face():
-	return self.current_mode;
+	return self.facing
+	
+func get_health():
+	return self.health

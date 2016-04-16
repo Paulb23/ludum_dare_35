@@ -90,4 +90,18 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
+[node name="health_text" type="Label" parent="gui"]
+
+margin/left = 370.0
+margin/top = 520.0
+margin/right = 410.0
+margin/bottom = 533.0
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+text = "100"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
 
