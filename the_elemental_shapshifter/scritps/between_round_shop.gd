@@ -105,14 +105,14 @@ func increase_earth_self_heal():
 	if points <= 0:
 		get_node("SamplePlayer").play("error_click")
 		return
-	get_parent().get_node("Player").MODE_EARTH_SELF_HEAL += 0.2
+	get_parent().get_node("Player").MODE_EARTH_SELF_HEAL += 0.1
 	update_points()
 	
 func reduce_earth_cooldown():
 	if points <= 0:
 		get_node("SamplePlayer").play("error_click")
 		return
-	get_parent().get_node("Player").MODE_EARTH_TIME_OUT -= 0.1
+	get_parent().get_node("Player").MODE_EARTH_TIME_OUT -= 0.2
 	update_points()
 	
 func increase_earth_duartion():
@@ -140,7 +140,7 @@ func reduce_air_cooldown():
 	if points <= 0:
 		get_node("SamplePlayer").play("error_click")
 		return
-	get_parent().get_node("Player").MODE_AIR_TIME_OUT -= 0.1
+	get_parent().get_node("Player").MODE_AIR_TIME_OUT -= 0.2
 	update_points()
 
 func increase_air_duration():

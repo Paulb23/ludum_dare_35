@@ -26,20 +26,20 @@ const MODE_PAUSED = 7
 var MODE_FIRE_SELF_DAMAGE = 0.5;
 var MODE_EARTH_SELF_HEAL = 0.1;
 
-var MODE_FIRE_TIME_OUT = 1.0
-var MODE_WATER_TIME_OUT = 1.0
-var MODE_EARTH_TIME_OUT = 1.0
-var MODE_AIR_TIME_OUT = 1.0
+var MODE_FIRE_TIME_OUT = 5.0
+var MODE_WATER_TIME_OUT = 5.0
+var MODE_EARTH_TIME_OUT = 6.0
+var MODE_AIR_TIME_OUT = 5.0
 
 var MODE_FIRE_CAST_TIME = 1.0
 var MODE_WATER_CAST_TIME = 1.0
 var MODE_EARTH_CAST_TIME = 1.0
 var MODE_AIR_CAST_TIME = 1.5
 
-var fire_dmg = 1
-var water_damage = 1
+var fire_dmg = 2
+var water_damage = 20
 var earth_damage = 0
-var air_damage = 1
+var air_damage = 20
 
 var current_mode = 0
 var spell_to_cast = 6
@@ -82,20 +82,20 @@ func reset_stats():
 	MODE_FIRE_SELF_DAMAGE = 0.5;
 	MODE_EARTH_SELF_HEAL = 0.1;
 	
-	MODE_FIRE_TIME_OUT = 1.0
-	MODE_WATER_TIME_OUT = 1.0
-	MODE_EARTH_TIME_OUT = 1.0
-	MODE_AIR_TIME_OUT = 1.0
+	MODE_FIRE_TIME_OUT = 5.0
+	MODE_WATER_TIME_OUT = 5.0
+	MODE_EARTH_TIME_OUT = 6.0
+	MODE_AIR_TIME_OUT = 5.0
 	
 	MODE_FIRE_CAST_TIME = 1.0
 	MODE_WATER_CAST_TIME = 1.0
 	MODE_EARTH_CAST_TIME = 1.0
 	MODE_AIR_CAST_TIME = 1.5
 	
-	fire_dmg = 1
-	water_damage = 1
+	fire_dmg = 2
+	water_damage = 20
 	earth_damage = 0
-	air_damage = 1
+	air_damage = 20
 	
 	current_mode = 0
 	spell_to_cast = 6

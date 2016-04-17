@@ -75,6 +75,9 @@ func _fixed_process(delta):
 			
 			var node = enemies_scenes[spawn].instance()
 			enemies.push_back(weakref(node))
+			node.max_health += current_round * 2
+			node.health = node.max_health
+			node.damage += current_round * 2
 			node.set_pos(Vector2(x*Globals.get("TILE_SIZE"), y *Globals.get("TILE_SIZE")));
 			get_node("navmesh").add_child(node)
 			spawned_enemies += 1
