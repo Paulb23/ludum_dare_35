@@ -1,6 +1,6 @@
 extends Node2D
 
-const LEVEL_TIME = 180
+const LEVEL_TIME = 5
 
 var enemies_scenes = [
 	load("res://characters/enemy/basic_meele_enemy.tscn"),
@@ -51,6 +51,7 @@ func round_start():
 	get_node("between_rounds_shop").hide_shop();
 	in_round = true
 	max_enemies = 5 * current_round
+	get_node("Player").health = get_node("Player").max_health
 	
 	if max_enemies <= 0:
 		max_enemies = 5 
@@ -67,10 +68,15 @@ func timer_start():
 	
 	
 func timer_end():
+	in_round = false
 	current_round += 1
 	get_node("gui").hide_gui()
 	get_node("Player").set_paused(true)
 	get_node("between_rounds_shop").show_shop();
+	if enemies.size() > 0:
+		for i in range(0, enemies.size()):
+			if enemies[i] != null:
+				enemies[i].queue_free()
 	
 func kill_enemy():
 	spawned_enemies -= 1;
