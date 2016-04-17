@@ -1,13 +1,17 @@
-[gd_scene load_steps=11 format=1]
+[gd_scene load_steps=15 format=1]
 
 [ext_resource path="res://scritps/game_controller.gd" type="Script" id=1]
 [ext_resource path="res://tiles/tiles.tres" type="TileSet" id=2]
 [ext_resource path="res://tiles/tiles.gd" type="Script" id=3]
 [ext_resource path="res://characters/player/player.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scritps/gui.gd" type="Script" id=5]
-[ext_resource path="res://music/music_1_converted.wav" type="Sample" id=6]
-[ext_resource path="res://music/music_2_converted.wav" type="Sample" id=7]
-[ext_resource path="res://music/music_3_converted.wav" type="Sample" id=8]
+[ext_resource path="res://sprites/fire_icon.png" type="Texture" id=6]
+[ext_resource path="res://sprites/water_icon.png" type="Texture" id=7]
+[ext_resource path="res://sprites/earth_icon.png" type="Texture" id=8]
+[ext_resource path="res://sprites/air_icon.png" type="Texture" id=9]
+[ext_resource path="res://music/music_1_converted.wav" type="Sample" id=10]
+[ext_resource path="res://music/music_2_converted.wav" type="Sample" id=11]
+[ext_resource path="res://music/music_3_converted.wav" type="Sample" id=12]
 
 [sub_resource type="NavigationPolygon" id=1]
 
@@ -17,9 +21,9 @@ outlines = [ Vector2Array( 31.9881, 31.9325, 767.87, 31.9835, 767.926, 511.953, 
 
 [sub_resource type="SampleLibrary" id=2]
 
-samples/music_3 = { "db":-10.0, "pitch":1.0, "sample":ExtResource( 8 ) }
-samples/music_2 = { "db":-10.0, "pitch":1.0, "sample":ExtResource( 7 ) }
-samples/music_1 = { "db":-10.0, "pitch":1.0, "sample":ExtResource( 6 ) }
+samples/music_1 = { "db":-10.0, "pitch":1.0, "sample":ExtResource( 10 ) }
+samples/music_3 = { "db":-10.0, "pitch":1.0, "sample":ExtResource( 12 ) }
+samples/music_2 = { "db":-10.0, "pitch":1.0, "sample":ExtResource( 11 ) }
 
 [node name="FloorController" type="Node2D"]
 
@@ -60,63 +64,30 @@ collision/margin = 0.08
 [node name="gui" type="Node2D" parent="."]
 
 script/script = ExtResource( 5 )
-__meta__ = { "_editor_collapsed":true }
 
-[node name="fire_cooldown_text" type="Label" parent="gui"]
+[node name="fire_sprite" type="Sprite" parent="gui"]
 
-margin/left = 104.0
-margin/top = 556.0
-margin/right = 144.0
-margin/bottom = 569.0
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-text = "10"
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
+transform/pos = Vector2( 230, 563 )
+texture = ExtResource( 6 )
+hframes = 2
 
-[node name="water_cooldown_text" type="Label" parent="gui"]
+[node name="water_sprite" type="Sprite" parent="gui"]
 
-margin/left = 293.0
-margin/top = 555.0
-margin/right = 333.0
-margin/bottom = 568.0
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-text = "10"
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
+transform/pos = Vector2( 320, 563 )
+texture = ExtResource( 7 )
+hframes = 2
 
-[node name="earth_cooldown_text" type="Label" parent="gui"]
+[node name="earth_sprite" type="Sprite" parent="gui"]
 
-margin/left = 517.0
-margin/top = 553.0
-margin/right = 557.0
-margin/bottom = 566.0
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-text = "10"
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
+transform/pos = Vector2( 410, 563 )
+texture = ExtResource( 8 )
+hframes = 2
 
-[node name="air_cooldown_text" type="Label" parent="gui"]
+[node name="air_sprite" type="Sprite" parent="gui"]
 
-margin/left = 682.0
-margin/top = 556.0
-margin/right = 722.0
-margin/bottom = 569.0
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-text = "10"
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
+transform/pos = Vector2( 500, 563 )
+texture = ExtResource( 9 )
+hframes = 2
 
 [node name="health_text" type="Label" parent="gui"]
 
