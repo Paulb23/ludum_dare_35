@@ -42,6 +42,7 @@ func restart():
 	spawned_enemies = 0
 	in_round = false
 	current_round = -1
+	get_node("Player").reset_stats()
 	timer_end()
 	
 func _fixed_process(delta):
@@ -67,6 +68,8 @@ func _fixed_process(delta):
 func round_start():
 	get_node("gui").show_gui()
 	get_node("Player").set_paused(false)
+	get_node("Player").set_pos(Vector2((map_width/ 2) * Globals.get("TILE_SIZE"), (map_height/ 2) * Globals.get("TILE_SIZE")))
+	get_node("Player").facing = get_node("Player").FACE_DOWN
 	in_round = true
 	max_enemies = 5 * current_round
 	get_node("Player").health = get_node("Player").max_health

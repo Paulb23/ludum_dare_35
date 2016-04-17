@@ -70,6 +70,38 @@ func _ready():
 	get_node("Area2D").connect("body_exit", self, "collision_end")
 	set_process_input(true)
 	
+func reset_stats():
+	max_health = 100
+	health = 100
+	current_dmg = 0
+	time_to_move = 15;
+	moving = false	
+	default_move_time = 15
+	air_time_to_move = 20
+	water_time_to_move = 17
+	MODE_FIRE_SELF_DAMAGE = 0.5;
+	MODE_EARTH_SELF_HEAL = 0.1;
+	
+	MODE_FIRE_TIME_OUT = 1.0
+	MODE_WATER_TIME_OUT = 1.0
+	MODE_EARTH_TIME_OUT = 1.0
+	MODE_AIR_TIME_OUT = 1.0
+	
+	MODE_FIRE_CAST_TIME = 1.0
+	MODE_WATER_CAST_TIME = 1.0
+	MODE_EARTH_CAST_TIME = 1.0
+	MODE_AIR_CAST_TIME = 1.5
+	
+	fire_dmg = 1
+	water_damage = 1
+	earth_damage = 0
+	air_damage = 1
+	
+	current_mode = 0
+	spell_to_cast = 6
+	
+	speed = 10
+	
 func _input(event):
 	if Input.is_action_pressed("pause") :
 		get_parent().game_pause()
