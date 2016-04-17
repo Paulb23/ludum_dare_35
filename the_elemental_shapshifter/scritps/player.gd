@@ -84,6 +84,7 @@ func _fixed_process(delta):
 		spell_to_cast = handle_cast_input()
 		
 		if (spell_to_cast == MODE_FIRE && get_node("fire_cooldown").get_time_left() == 0):
+			get_node("SamplePlayer").play("fire_attack")
 			var node = fire_scene.instance()
 			var current_pos = node.get_pos()
 			current_pos.x += Globals.get("TILE_SIZE")
@@ -122,6 +123,7 @@ func _fixed_process(delta):
 			get_node("Timer").set_wait_time(MODE_WATER_CAST_TIME)
 			get_node("Timer").start()
 			get_node("AnimationPlayer").play("cast_water")
+			get_node("SamplePlayer").play("water_attack")
 			time_to_move = water_time_to_move
 			current_dmg = water_damage
 			current_mode = MODE_CAST
@@ -130,6 +132,7 @@ func _fixed_process(delta):
 			get_node("Timer").set_wait_time(MODE_EARTH_CAST_TIME)
 			get_node("Timer").start()
 			get_node("AnimationPlayer").play("cast_earth")
+			get_node("SamplePlayer").play("earth_attack")
 			current_dmg = earth_damage
 			current_mode = MODE_CAST
 		
@@ -137,6 +140,7 @@ func _fixed_process(delta):
 			get_node("Timer").set_wait_time(MODE_AIR_CAST_TIME)
 			get_node("Timer").start()
 			get_node("AnimationPlayer").play("cast_air")
+			get_node("SamplePlayer").play("air_attack")
 			time_to_move = air_time_to_move
 			current_dmg = air_damage
 			current_mode = MODE_CAST 
