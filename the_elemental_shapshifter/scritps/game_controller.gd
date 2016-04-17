@@ -37,7 +37,7 @@ func _fixed_process(delta):
 			var spawn = (randi() % enemies_scenes.size())
 			
 			var node = enemies_scenes[spawn].instance()
-			enemies.push_back(node)
+			enemies.push_back(weakref(node))
 			node.set_pos(Vector2(x*Globals.get("TILE_SIZE"), y *Globals.get("TILE_SIZE")));
 			get_node("navmesh").add_child(node)
 			spawned_enemies += 1
@@ -75,8 +75,8 @@ func timer_end():
 	get_node("between_rounds_shop").show_shop();
 	if enemies.size() > 0:
 		for i in range(0, enemies.size()):
-			if enemies[i] != null:
-				enemies[i].queue_free()
+			if enemies[i].get_ref():
+				enemies[i].get_ref().queue_free()
 	
 func kill_enemy():
 	spawned_enemies -= 1;
