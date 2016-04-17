@@ -1,6 +1,6 @@
 extends Node2D
 
-var LEVEL_TIME = 180
+var LEVEL_TIME = 10
 
 var shop = load("res://other/shop.tscn")
 var pause = load("res://other/pause.tscn")
@@ -60,7 +60,19 @@ func _fixed_process(delta):
 		if spawned_enemies < max_enemies && get_node("spawn_timer").get_time_left() == 0:
 			var x = (randi() % map_width) + 2
 			var y = (randi() % map_height) + 2
-			var spawn = (randi() % enemies_scenes.size())
+			
+			var enemy_size = enemies_scenes.size()
+			
+			if current_round == 0:			# i guess this counts as diffuculty scaling? 
+				enemy_size = current_round
+			elif current_round < enemy_size:
+				enemy_size = current_round
+			
+			print(enemy_size)
+			var spawn = 0
+			if enemy_size > 0:	
+				spawn = (randi() % enemy_size)
+			
 			
 			var node = enemies_scenes[spawn].instance()
 			enemies.push_back(weakref(node))
@@ -111,6 +123,7 @@ func timer_end():
 				enemies[i].get_ref().queue_free()
 	
 func kill_enemy(p_score):
+	get_node("SamplePlayer").play("beep")
 	score += p_score
 	spawned_enemies -= 1;
 	

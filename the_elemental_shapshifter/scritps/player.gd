@@ -363,5 +363,5 @@ func hit(dmg):
 	get_node("SamplePlayer").play("hit")
 	health -= dmg
 	
-	#if health <= 0.0:
-	#	get_parent().player_died()
+	if health <= 0.0:
+		get_parent().player_died()
