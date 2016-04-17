@@ -274,7 +274,8 @@ func collision(body):
 	colliders.push_back(body)
 	
 func collision_end(body):
-	colliders.remove(colliders.find(body))
+	if colliders.find(body) != -1:
+		colliders.remove(colliders.find(body))
 	
 func timer_end():
 	get_node("Timer").stop()

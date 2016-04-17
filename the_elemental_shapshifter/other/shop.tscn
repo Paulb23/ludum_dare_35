@@ -1,281 +1,394 @@
-[gd_scene load_steps=5 format=1]
+[gd_scene load_steps=9 format=1]
 
 [ext_resource path="res://scritps/between_round_shop.gd" type="Script" id=1]
-[ext_resource path="res://sfx/click_converted.wav" type="Sample" id=2]
-[ext_resource path="res://sfx/error_click_converted.wav" type="Sample" id=3]
+[ext_resource path="res://fonts/pirulen/pirulen_48.fnt" type="Font" id=2]
+[ext_resource path="res://fonts/pirulen/pirulen_32.fnt" type="Font" id=3]
+[ext_resource path="res://fonts/sunvox-1.9.1/exo_light_12.fnt" type="Font" id=4]
+[ext_resource path="res://fonts/pirulen/pirulen_16.fnt" type="Font" id=5]
+[ext_resource path="res://sfx/click_converted.wav" type="Sample" id=6]
+[ext_resource path="res://sfx/error_click_converted.wav" type="Sample" id=7]
 
 [sub_resource type="SampleLibrary" id=1]
 
-samples/error_click = { "db":0.0, "pitch":1.0, "sample":ExtResource( 3 ) }
-samples/click = { "db":0.0, "pitch":1.0, "sample":ExtResource( 2 ) }
+samples/click = { "db":0.0, "pitch":1.0, "sample":ExtResource( 6 ) }
+samples/error_click = { "db":0.0, "pitch":1.0, "sample":ExtResource( 7 ) }
 
 [node name="shop" type="Node2D"]
 
 transform/pos = Vector2( 146.261, -7.75625 )
 script/script = ExtResource( 1 )
 
+[node name="shop_title" type="Label" parent="."]
+
+margin/left = -49.0
+margin/top = 77.0
+margin/right = 136.0
+margin/bottom = 125.0
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+custom_fonts/font = ExtResource( 2 )
+text = "Shop"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
 [node name="start_round_button" type="Button" parent="."]
 
-margin/left = 502.0
-margin/top = 464.0
-margin/right = 585.0
-margin/bottom = 483.0
+margin/left = -6.0
+margin/top = 426.0
+margin/right = 491.0
+margin/bottom = 480.0
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
+custom_fonts/font = ExtResource( 3 )
 toggle_mode = false
 text = "Enter Round"
 flat = false
 
 [node name="upgrade_health" type="Button" parent="."]
 
-margin/left = -49.0
-margin/top = 81.0
-margin/right = 52.0
-margin/bottom = 100.0
+margin/left = -54.0
+margin/top = 154.0
+margin/right = 42.0
+margin/bottom = 175.0
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
+custom_fonts/font = ExtResource( 4 )
 toggle_mode = false
 text = "Upgrade Health"
 flat = false
 
 [node name="upgrade_speed" type="Button" parent="."]
 
-margin/left = -48.0
-margin/top = 113.0
-margin/right = 48.0
-margin/bottom = 132.0
+margin/left = -55.0
+margin/top = 181.0
+margin/right = 50.0
+margin/bottom = 202.0
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
+custom_fonts/font = ExtResource( 4 )
 toggle_mode = false
 text = "upgrade speed"
 flat = false
 
 [node name="upgrade_fire_damage" type="Button" parent="."]
 
-margin/left = -47.0
-margin/top = 153.0
-margin/right = 89.0
-margin/bottom = 172.0
+margin/left = -54.0
+margin/top = 293.0
+margin/right = 88.0
+margin/bottom = 307.0
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
+custom_fonts/font = ExtResource( 4 )
 toggle_mode = false
 text = "Updrage Fire Damage"
 flat = false
 
 [node name="reduce_fire_self_damage" type="Button" parent="."]
 
-margin/left = -48.0
-margin/top = 187.0
-margin/right = 109.0
-margin/bottom = 206.0
+margin/left = -54.0
+margin/top = 267.0
+margin/right = 111.0
+margin/bottom = 284.0
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
+custom_fonts/font = ExtResource( 4 )
 toggle_mode = false
 text = "Reduce Fire Self Damage"
 flat = false
 
 [node name="reduce_fire_cooldown" type="Button" parent="."]
 
-margin/left = -47.0
-margin/top = 219.0
-margin/right = 93.0
-margin/bottom = 238.0
+margin/left = -54.0
+margin/top = 214.0
+margin/right = 97.0
+margin/bottom = 233.0
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
+custom_fonts/font = ExtResource( 4 )
 toggle_mode = false
 text = "Reduce Fire Cooldown"
 flat = false
 
 [node name="increase_fire_duration" type="Button" parent="."]
 
-margin/left = -48.0
-margin/top = 250.0
-margin/right = 91.0
-margin/bottom = 269.0
+margin/left = -54.0
+margin/top = 242.0
+margin/right = 99.0
+margin/bottom = 259.0
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
+custom_fonts/font = ExtResource( 4 )
 toggle_mode = false
 text = "Increase Fire Duration"
 flat = false
 
 [node name="upgrade_water_damage" type="Button" parent="."]
 
-margin/left = 162.0
-margin/top = 150.0
-margin/right = 318.0
-margin/bottom = 169.0
+margin/left = 189.0
+margin/top = 147.0
+margin/right = 330.0
+margin/bottom = 170.0
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
+custom_fonts/font = ExtResource( 4 )
 toggle_mode = false
 text = "Upgrade Water Damage"
 flat = false
 
 [node name="increace_water_speed" type="Button" parent="."]
 
-margin/left = 162.0
-margin/top = 179.0
-margin/right = 300.0
-margin/bottom = 198.0
+margin/left = 189.0
+margin/top = 178.0
+margin/right = 327.0
+margin/bottom = 199.0
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
+custom_fonts/font = ExtResource( 4 )
 toggle_mode = false
 text = "Increase Water Speed"
 flat = false
 
 [node name="reduce_water_cooldown" type="Button" parent="."]
 
-margin/left = 162.0
-margin/top = 210.0
-margin/right = 312.0
+margin/left = 189.0
+margin/top = 208.0
+margin/right = 339.0
 margin/bottom = 229.0
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
+custom_fonts/font = ExtResource( 4 )
 toggle_mode = false
 text = "Reduce water cooldown"
 flat = false
 
 [node name="increace_water_duration" type="Button" parent="."]
 
-margin/left = 161.0
-margin/top = 243.0
-margin/right = 312.0
-margin/bottom = 262.0
+margin/left = 189.0
+margin/top = 240.0
+margin/right = 340.0
+margin/bottom = 261.0
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
+custom_fonts/font = ExtResource( 4 )
 toggle_mode = false
 text = "Increase Water Duration"
 flat = false
 
 [node name="increase_earth_self_heal" type="Button" parent="."]
 
-margin/left = -49.0
-margin/top = 333.0
-margin/right = 79.0
-margin/bottom = 352.0
+margin/left = -54.0
+margin/top = 381.0
+margin/right = 87.0
+margin/bottom = 400.0
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
+custom_fonts/font = ExtResource( 4 )
 toggle_mode = false
 text = "Increase Earth Heal"
 flat = false
 
 [node name="reduce_earth_cooldown" type="Button" parent="."]
 
-margin/left = -49.0
-margin/top = 362.0
-margin/right = 100.0
-margin/bottom = 381.0
+margin/left = -54.0
+margin/top = 354.0
+margin/right = 112.0
+margin/bottom = 373.0
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
+custom_fonts/font = ExtResource( 4 )
 toggle_mode = false
 text = "Reduce Earth Cooldown"
 flat = false
 
 [node name="increase_earth_duartion" type="Button" parent="."]
 
-margin/left = -50.0
-margin/top = 393.0
-margin/right = 98.0
-margin/bottom = 412.0
+margin/left = -54.0
+margin/top = 330.0
+margin/right = 114.0
+margin/bottom = 347.0
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
+custom_fonts/font = ExtResource( 4 )
 toggle_mode = false
 text = "Increase Earth Duration"
 flat = false
 
 [node name="upgrade_air_damage" type="Button" parent="."]
 
-margin/left = 160.0
-margin/top = 325.0
-margin/right = 289.0
-margin/bottom = 344.0
+margin/left = 189.0
+margin/top = 289.0
+margin/right = 318.0
+margin/bottom = 310.0
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
+custom_fonts/font = ExtResource( 4 )
 toggle_mode = false
 text = "Upgrade Air Damage"
 flat = false
 
 [node name="increase_air_speed" type="Button" parent="."]
 
-margin/left = 160.0
-margin/top = 357.0
-margin/right = 272.0
-margin/bottom = 376.0
+margin/left = 189.0
+margin/top = 316.0
+margin/right = 301.0
+margin/bottom = 337.0
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
+custom_fonts/font = ExtResource( 4 )
 toggle_mode = false
 text = "Increse Air Speed"
 flat = false
 
 [node name="reduce_air_cooldown" type="Button" parent="."]
 
-margin/left = 153.0
-margin/top = 393.0
-margin/right = 288.0
-margin/bottom = 412.0
+margin/left = 189.0
+margin/top = 345.0
+margin/right = 324.0
+margin/bottom = 366.0
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
+custom_fonts/font = ExtResource( 4 )
 toggle_mode = false
 text = "Reduce Air Cooldown"
 flat = false
 
 [node name="increase_air_duration" type="Button" parent="."]
 
-margin/left = 160.0
-margin/top = 427.0
-margin/right = 292.0
-margin/bottom = 446.0
+margin/left = 189.0
+margin/top = 376.0
+margin/right = 321.0
+margin/bottom = 397.0
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
+custom_fonts/font = ExtResource( 4 )
 toggle_mode = false
 text = "Increase Air Duration"
 flat = false
 
 [node name="points" type="Label" parent="."]
 
-margin/left = 206.0
-margin/top = 83.0
-margin/right = 269.0
-margin/bottom = 96.0
+margin/left = 372.0
+margin/top = 105.0
+margin/right = 659.0
+margin/bottom = 137.0
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
-text = "Points Left"
+custom_fonts/font = ExtResource( 5 )
+text = "Points To Spend"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="point_number" type="Label" parent="."]
+
+margin/left = 434.0
+margin/top = 130.0
+margin/right = 474.0
+margin/bottom = 147.0
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+custom_fonts/font = ExtResource( 5 )
+text = "5"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="round" type="Label" parent="."]
+
+margin/left = 416.0
+margin/top = 186.0
+margin/right = 497.0
+margin/bottom = 203.0
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+custom_fonts/font = ExtResource( 5 )
+text = "Round"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="round_number" type="Label" parent="."]
+
+margin/left = 432.0
+margin/top = 213.0
+margin/right = 472.0
+margin/bottom = 230.0
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+custom_fonts/font = ExtResource( 5 )
+text = "5"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="score" type="Label" parent="."]
+
+margin/left = 419.0
+margin/top = 277.0
+margin/right = 494.0
+margin/bottom = 294.0
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+custom_fonts/font = ExtResource( 5 )
+text = "Score"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="score_number" type="Label" parent="."]
+
+margin/left = 436.0
+margin/top = 299.0
+margin/right = 476.0
+margin/bottom = 316.0
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+custom_fonts/font = ExtResource( 5 )
+text = "5"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1

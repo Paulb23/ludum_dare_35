@@ -21,7 +21,8 @@ func _ready():
 	get_node("increase_air_speed").connect("pressed", self, "increase_air_speed")
 	get_node("reduce_air_cooldown").connect("pressed", self, "reduce_air_cooldown")
 	get_node("increase_air_duration").connect("pressed", self, "increase_air_duration")
-	
+	get_node("round_number").set_text(str(get_parent().current_round))
+	get_node("score_number").set_text(str(get_parent().score))
 	points = 6
 	update_points()
 	
@@ -154,9 +155,10 @@ func update_points():
 		return
 	get_node("SamplePlayer").play("click")
 	points -= 1
-	get_node("points").set_text("Points Left : " + str(points))
+	get_node("point_number").set_text(str(points))
 	
 func show_shop():		
+	get_node("shop_title").show()	
 	get_node("start_round_button").show()		
 	get_node("upgrade_health").show()		
 	get_node("upgrade_speed").show()		
@@ -175,10 +177,16 @@ func show_shop():
 	get_node("increase_air_speed").show()		
 	get_node("reduce_air_cooldown").show()		
 	get_node("increase_air_duration").show()		
-	get_node("points").show()			
+	get_node("points").show()
+	get_node("point_number").show()
+	get_node("round").show()
+	get_node("round_number").show()		
+	get_node("score").show()
+	get_node("score_number").show()								
 			
 			
-func hide_shop():		
+func hide_shop():
+	get_node("shop_title").hide()		
 	get_node("upgrade_health").hide()		
 	get_node("start_round_button").hide()		
 	get_node("upgrade_speed").hide()		
@@ -198,3 +206,8 @@ func hide_shop():
 	get_node("reduce_air_cooldown").hide()		
 	get_node("increase_air_duration").hide()		
 	get_node("points").hide() 
+	get_node("point_number").hide()	
+	get_node("round").hide()
+	get_node("round_number").hide()	
+	get_node("score").hide()
+	get_node("score_number").hide()		

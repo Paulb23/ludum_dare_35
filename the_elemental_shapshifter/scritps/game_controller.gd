@@ -1,6 +1,6 @@
 extends Node2D
 
-var LEVEL_TIME = 10
+var LEVEL_TIME = 180
 
 var shop = load("res://other/shop.tscn")
 var pause = load("res://other/pause.tscn")
@@ -68,7 +68,6 @@ func _fixed_process(delta):
 			elif current_round < enemy_size:
 				enemy_size = current_round
 			
-			print(enemy_size)
 			var spawn = 0
 			if enemy_size > 0:	
 				spawn = (randi() % enemy_size)
@@ -87,11 +86,11 @@ func round_start():
 	get_node("gui").show_gui()
 	get_node("Player").set_paused(false)
 	get_node("Player").set_pos(Vector2((map_width/ 2) * Globals.get("TILE_SIZE"), (map_height/ 2) * Globals.get("TILE_SIZE")))
-	get_node("Player").facing = get_node("Player").FACE_DOWN
 	in_round = true
 	max_enemies = 5 * current_round
 	get_node("Player").health = get_node("Player").max_health
 	shop_instance.queue_free()
+	spawned_enemies = 0
 	if max_enemies <= 0:
 		max_enemies = 5 
 	if max_enemies >= 20:
