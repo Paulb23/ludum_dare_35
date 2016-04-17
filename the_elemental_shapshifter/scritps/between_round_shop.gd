@@ -26,108 +26,133 @@ func _ready():
 	update_points()
 	
 func start_round():
+	get_node("SamplePlayer").play("click")
 	get_parent().round_start()
 	
 	
 func upgrade_health():
 	if points <= 0:
+		get_node("SamplePlayer").play("error_click")
 		return
 	get_parent().get_node("Player").max_health += 50
 	update_points()
 	
 func upgrade_speed():
 	if points <= 0:
+		get_node("SamplePlayer").play("error_click")
 		return
 	get_parent().get_node("Player").time_to_move += 2
 	update_points()
 	
 func upgrade_fire_damage():
+	if points <= 0:
+		get_node("SamplePlayer").play("error_click")
+		return
 	get_parent().get_node("Player").fire_dmg += 2
 	update_points()
 
 func reduce_fire_self_damage():
 	if points <= 0:
+		get_node("SamplePlayer").play("error_click")
 		return
 	get_parent().get_node("Player").MODE_FIRE_SELF_DAMAGE -= 0.1
 	update_points()
 	
 func reduce_fire_cooldown():
 	if points <= 0:
+		get_node("SamplePlayer").play("error_click")
 		return
 	get_parent().get_node("Player").MODE_FIRE_TIME_OUT -= 0.1
 	update_points()
 	
 func increase_fire_duration():
 	if points <= 0:
+		get_node("SamplePlayer").play("error_click")
 		return
 	get_parent().get_node("Player").MODE_FIRE_CAST_TIME += 0.2
 	update_points()
 	
 func upgrade_water_damage():
+	if points <= 0:
+		get_node("SamplePlayer").play("error_click")
+		return
 	get_parent().get_node("Player").water_damage += 2
 	update_points()
 	
 func increace_water_speed():
 	if points <= 0:
+		get_node("SamplePlayer").play("error_click")
 		return
 	get_parent().get_node("Player").water_time_to_move += 1
 	update_points()
 
 func reduce_water_cooldown():
 	if points <= 0:
+		get_node("SamplePlayer").play("error_click")
 		return
 	get_parent().get_node("Player").MODE_WATER_TIME_OUT -= 0.1
 	update_points()
 
 func increace_water_duration():
 	if points <= 0:
+		get_node("SamplePlayer").play("error_click")
 		return
 	get_parent().get_node("Player").MODE_WATER_CAST_TIME += 0.2
 	update_points()
 	
 func increase_earth_self_heal():
 	if points <= 0:
+		get_node("SamplePlayer").play("error_click")
 		return
 	get_parent().get_node("Player").MODE_EARTH_SELF_HEAL += 0.2
 	update_points()
 	
 func reduce_earth_cooldown():
 	if points <= 0:
+		get_node("SamplePlayer").play("error_click")
 		return
 	get_parent().get_node("Player").MODE_EARTH_TIME_OUT -= 0.1
 	update_points()
 	
 func increase_earth_duartion():
 	if points <= 0:
+		get_node("SamplePlayer").play("error_click")
 		return 
 	get_parent().get_node("Player").MODE_EARTH_CAST_TIME += 0.2
 	update_points()
 	
 func upgrade_air_damage():
 	if points <= 0:
+		get_node("SamplePlayer").play("error_click")
 		return
 	get_parent().get_node("Player").air_damage += 2
 	update_points()
 		
 func increase_air_speed():
 	if points <= 0:
+		get_node("SamplePlayer").play("error_click")
 		return
 	get_parent().get_node("Player").air_time_to_move += 1
 	update_points()
 
 func reduce_air_cooldown():
 	if points <= 0:
+		get_node("SamplePlayer").play("error_click")
 		return
 	get_parent().get_node("Player").MODE_AIR_TIME_OUT -= 0.1
 	update_points()
 
 func increase_air_duration():
 	if points <= 0:
+		get_node("SamplePlayer").play("error_click")
 		return
 	get_parent().get_node("Player").MODE_AIR_CAST_TIME += 0.2
 	update_points()
 
 func update_points():
+	if points <= 0:
+		return
+	get_node("SamplePlayer").play("click")
 	points -= 1
 	get_node("points").set_text("Points Left : " + str(points))
 	

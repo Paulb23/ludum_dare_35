@@ -17,9 +17,9 @@ outlines = [ Vector2Array( 31.9881, 31.9325, 767.87, 31.9835, 767.926, 511.953, 
 
 [sub_resource type="SampleLibrary" id=2]
 
-samples/music_1 = { "db":-10.0, "pitch":1.0, "sample":ExtResource( 6 ) }
 samples/music_3 = { "db":-10.0, "pitch":1.0, "sample":ExtResource( 8 ) }
 samples/music_2 = { "db":-10.0, "pitch":1.0, "sample":ExtResource( 7 ) }
+samples/music_1 = { "db":-10.0, "pitch":1.0, "sample":ExtResource( 6 ) }
 
 [node name="FloorController" type="Node2D"]
 
@@ -162,7 +162,7 @@ autostart = false
 
 [node name="SamplePlayer" type="SamplePlayer" parent="."]
 
-config/polyphony = 1
+config/polyphony = 4
 config/samples = SubResource( 2 )
 default/volume_db = 0.0
 default/pitch_scale = 1.0

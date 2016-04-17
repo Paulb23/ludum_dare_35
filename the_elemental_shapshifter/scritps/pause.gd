@@ -20,11 +20,14 @@ func timer_end():
 	can_unpause = true
 		
 func resume():
+	get_node("SamplePlayer").play("click")	
 	get_parent().game_unpause()
 	
 func main_menu():
+	get_node("SamplePlayer").play("click")	
 	get_parent().game_unpause()
 	get_node("/root/globals").set_scene("res://menus/main_menu.tscn");
 	
 func exit():
+	get_node("SamplePlayer").play("click")	
 	get_tree().quit()

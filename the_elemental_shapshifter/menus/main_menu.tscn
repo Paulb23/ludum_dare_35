@@ -1,13 +1,15 @@
-[gd_scene load_steps=5 format=1]
+[gd_scene load_steps=6 format=1]
 
 [ext_resource path="res://scritps/main_menu.gd" type="Script" id=1]
-[ext_resource path="res://music/menu_music_1_converted.wav" type="Sample" id=2]
-[ext_resource path="res://music/menu_music_2_converted.wav" type="Sample" id=3]
+[ext_resource path="res://sfx/click_converted.wav" type="Sample" id=2]
+[ext_resource path="res://music/menu_music_1_converted.wav" type="Sample" id=3]
+[ext_resource path="res://music/menu_music_2_converted.wav" type="Sample" id=4]
 
 [sub_resource type="SampleLibrary" id=1]
 
-samples/menu_music_2 = { "db":-10.0, "pitch":1.0, "sample":ExtResource( 3 ) }
-samples/menu_music_1 = { "db":-10.0, "pitch":1.0, "sample":ExtResource( 2 ) }
+samples/menu_music_1 = { "db":-10.0, "pitch":1.0, "sample":ExtResource( 3 ) }
+samples/click = { "db":0.0, "pitch":1.0, "sample":ExtResource( 2 ) }
+samples/menu_music_2 = { "db":-10.0, "pitch":1.0, "sample":ExtResource( 4 ) }
 
 [node name="main_menu" type="Node2D"]
 
@@ -58,7 +60,7 @@ flat = false
 
 [node name="SamplePlayer" type="SamplePlayer" parent="."]
 
-config/polyphony = 1
+config/polyphony = 2
 config/samples = SubResource( 1 )
 default/volume_db = 0.0
 default/pitch_scale = 1.0

@@ -12,7 +12,9 @@ func _fixed_process(delta):
 		get_node("SamplePlayer").play("menu_music_" + str(track))
 	
 func start_game():
+	get_node("SamplePlayer").play("click")	
 	get_node("/root/globals").set_scene("res://other/floor_controller.tscn");
 
 func exit():
+	get_node("SamplePlayer").play("click")	
 	get_tree().quit()
