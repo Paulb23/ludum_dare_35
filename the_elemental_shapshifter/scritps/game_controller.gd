@@ -88,7 +88,7 @@ func _fixed_process(delta):
 func round_start():
 	get_node("gui").show_gui()
 	get_node("Player").set_paused(false)
-	get_node("Player").set_pos(Vector2((map_width/ 2) * Globals.get("TILE_SIZE"), (map_height/ 2) * Globals.get("TILE_SIZE")))
+	get_node("Player").set_pos(get_node("Player").starting_pos)
 	in_round = true
 	max_enemies = 5 * current_round
 	get_node("Player").health = get_node("Player").max_health

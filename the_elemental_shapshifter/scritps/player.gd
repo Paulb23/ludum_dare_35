@@ -37,9 +37,9 @@ var MODE_EARTH_CAST_TIME = 1.0
 var MODE_AIR_CAST_TIME = 1.5
 
 var fire_dmg = 2
-var water_damage = 20
+var water_damage = 10
 var earth_damage = 0
-var air_damage = 20
+var air_damage = 10
 
 var current_mode = 0
 var spell_to_cast = 6
@@ -58,6 +58,7 @@ var max_health = 100
 var health = 100
 var current_dmg = 0
 
+var starting_pos = get_pos()
 var target_pos = get_pos();
 var actual_pos = get_pos();
 
@@ -68,6 +69,7 @@ func _ready():
 	get_node("Timer").connect("timeout", self, "timer_end")
 	get_node("Area2D").connect("body_enter", self, "collision")
 	get_node("Area2D").connect("body_exit", self, "collision_end")
+	starting_pos = get_pos()
 	set_process_input(true)
 	
 func reset_stats():
@@ -93,9 +95,9 @@ func reset_stats():
 	MODE_AIR_CAST_TIME = 1.5
 	
 	fire_dmg = 2
-	water_damage = 20
+	water_damage = 10
 	earth_damage = 0
-	air_damage = 20
+	air_damage = 10
 	
 	current_mode = 0
 	spell_to_cast = 6
@@ -351,6 +353,7 @@ func get_health():
 	
 func set_paused(paused):
 	if (paused):
+		moving = false
 		current_mode = MODE_PAUSED
 		remove_fire()
 		get_node("AnimatedSprite").hide()
