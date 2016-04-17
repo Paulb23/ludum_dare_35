@@ -37,7 +37,9 @@ func _ready():
 	
 	
 func _fixed_process(delta):
-	get_node("health_text").set_text(str(self.health))
+	var decrease = max_health - health
+	var percent_decreace = float(decrease) / float(max_health)
+	get_node("health_bar").set_percentage((float(1.00) - (float(percent_decreace))))
 	
 	# ugly but Meh!
 	for i in range(0, time_to_move):

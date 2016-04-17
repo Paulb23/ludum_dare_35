@@ -13,7 +13,7 @@ func _fixed_process(delta):
 	if current_mode == MODE_HIDDEN:
 		return
 	
-	get_node("clock").set_text(str(get_parent().get_node("level_timer").get_time_left()))
+	get_node("clock").set_text(str(int(get_parent().get_node("level_timer").get_time_left())))
 	
 	var player = get_parent().get_node("Player")
 	

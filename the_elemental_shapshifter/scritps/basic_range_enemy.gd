@@ -39,7 +39,9 @@ func _ready():
 	
 	
 func _fixed_process(delta):
-	get_node("health_text").set_text(str(self.health))
+	var decrease = max_health - health
+	var percent_decreace = float(decrease) / float(max_health)
+	get_node("health_bar").set_percentage((float(1.00) - (float(percent_decreace))))
 	
 	# ugly but Meh!
 	for i in range(0, time_to_move):
@@ -76,20 +78,20 @@ func _fixed_process(delta):
 							direction = MOVE_UP
 						elif next_point.y > get_pos().y:
 							direction = MOVE_DOWN
-			
-				if (get_node("attack_timer").get_time_left() == 0 && get_parent().get_parent().get_node("Player").get_spell() != get_parent().get_parent().get_node("Player").MODE_EARTH):
-					var node = arrow.instance()
-					node.parent = "basic_range_enemy"
-					node.dmg = damage
-					node.set_pos(get_pos())
-					node.set_speed(150)
-					node.set_taget(get_player_pos())
-					get_parent().add_child(node)
-					get_node("attack_timer").set_wait_time(attack_speed)
-					get_node("attack_timer").start()
 								
 				if direction != MOVE_NONE:
 					move_node(direction)
+				else:
+					if (get_node("attack_timer").get_time_left() == 0 && get_parent().get_parent().get_node("Player").get_spell() != get_parent().get_parent().get_node("Player").MODE_EARTH):
+						var node = arrow.instance()
+						node.parent = "basic_range_enemy"
+						node.dmg = damage
+						node.set_pos(get_pos())
+						node.set_speed(150)
+						node.set_taget(get_player_pos())
+						get_parent().add_child(node)
+						get_node("attack_timer").set_wait_time(attack_speed)
+						get_node("attack_timer").start() 
 		if moving:
 			var motion = get_pos() - target_pos;
 			motion = motion.normalized()
