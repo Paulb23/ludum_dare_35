@@ -43,6 +43,7 @@ func _fixed_process(delta):
 			get_node("air_sprite").set_frame(1)
 		
 func hide_gui():
+	get_node("time_left").hide()
 	get_node("clock").hide()
 	get_node("health_bar").hide()
 	get_node("fire_sprite").hide()
@@ -52,6 +53,7 @@ func hide_gui():
 	current_mode = MODE_HIDDEN
 	
 func show_gui():
+	get_node("time_left").show()
 	get_node("clock").show()
 	get_node("health_bar").show()
 	get_node("fire_sprite").show()

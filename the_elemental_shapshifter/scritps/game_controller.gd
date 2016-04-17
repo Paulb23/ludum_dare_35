@@ -32,8 +32,8 @@ func _ready():
 	map_width = Globals.get("SCREEN_WIDTH") / Globals.get("TILE_SIZE")
 	map_height = Globals.get("SCREEN_HEIGHT") / Globals.get("TILE_SIZE")
 	
-	map_width -= 2
-	map_height -= 4
+	map_width -= 4
+	map_height -= 6
 	timer_end()
 	
 func restart():
@@ -52,8 +52,8 @@ func _fixed_process(delta):
 	
 	if in_round:
 		if spawned_enemies < max_enemies && get_node("spawn_timer").get_time_left() == 0:
-			var x = (randi() % map_width) + 1
-			var y = (randi() % map_height) + 1
+			var x = (randi() % map_width) + 2
+			var y = (randi() % map_height) + 2
 			var spawn = (randi() % enemies_scenes.size())
 			
 			var node = enemies_scenes[spawn].instance()
