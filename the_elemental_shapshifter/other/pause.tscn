@@ -1,13 +1,16 @@
-[gd_scene load_steps=6 format=1]
+[gd_scene load_steps=9 format=1]
 
 [ext_resource path="res://scritps/pause.gd" type="Script" id=1]
 [ext_resource path="res://fonts/pirulen/pirulen_64.fnt" type="Font" id=2]
-[ext_resource path="res://fonts/pirulen/pirulen_16.fnt" type="Font" id=3]
-[ext_resource path="res://sfx/click_converted.wav" type="Sample" id=4]
+[ext_resource path="res://themse/button_hovered.tres" type="StyleBox" id=3]
+[ext_resource path="res://themse/button_pressed.tres" type="StyleBox" id=4]
+[ext_resource path="res://themse/buttons_normal.tres" type="StyleBox" id=5]
+[ext_resource path="res://fonts/pirulen/pirulen_16.fnt" type="Font" id=6]
+[ext_resource path="res://sfx/click_converted.wav" type="Sample" id=7]
 
 [sub_resource type="SampleLibrary" id=1]
 
-samples/click = { "db":0.0, "pitch":1.0, "sample":ExtResource( 4 ) }
+samples/click = { "db":0.0, "pitch":1.0, "sample":ExtResource( 7 ) }
 
 [node name="pause" type="Node2D"]
 
@@ -39,7 +42,10 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-custom_fonts/font = ExtResource( 3 )
+custom_styles/hover = ExtResource( 3 )
+custom_styles/pressed = ExtResource( 4 )
+custom_styles/normal = ExtResource( 5 )
+custom_fonts/font = ExtResource( 6 )
 toggle_mode = false
 text = "Resume"
 flat = false
@@ -54,7 +60,10 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-custom_fonts/font = ExtResource( 3 )
+custom_styles/hover = ExtResource( 3 )
+custom_styles/pressed = ExtResource( 4 )
+custom_styles/normal = ExtResource( 5 )
+custom_fonts/font = ExtResource( 6 )
 toggle_mode = false
 text = "main menu"
 flat = false
@@ -69,7 +78,10 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-custom_fonts/font = ExtResource( 3 )
+custom_styles/hover = ExtResource( 3 )
+custom_styles/pressed = ExtResource( 4 )
+custom_styles/normal = ExtResource( 5 )
+custom_fonts/font = ExtResource( 6 )
 toggle_mode = false
 text = "Exit"
 flat = false

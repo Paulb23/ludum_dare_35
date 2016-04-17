@@ -1,23 +1,26 @@
-[gd_scene load_steps=14 format=1]
+[gd_scene load_steps=17 format=1]
 
 [ext_resource path="res://scritps/main_menu.gd" type="Script" id=1]
 [ext_resource path="res://fonts/pirulen/pirulen_64.fnt" type="Font" id=2]
-[ext_resource path="res://fonts/pirulen/pirulen_16.fnt" type="Font" id=3]
-[ext_resource path="res://sfx/click_converted.wav" type="Sample" id=4]
-[ext_resource path="res://music/menu_music_1_converted.wav" type="Sample" id=5]
-[ext_resource path="res://music/menu_music_2_converted.wav" type="Sample" id=6]
-[ext_resource path="res://sprites/fire_icon.png" type="Texture" id=7]
-[ext_resource path="res://fonts/sunvox-1.9.1/exo_light_16.fnt" type="Font" id=8]
-[ext_resource path="res://sprites/water_icon.png" type="Texture" id=9]
-[ext_resource path="res://sprites/earth_icon.png" type="Texture" id=10]
-[ext_resource path="res://sprites/air_icon.png" type="Texture" id=11]
-[ext_resource path="res://fonts/pirulen/pirulen_32.fnt" type="Font" id=12]
+[ext_resource path="res://themse/button_hovered.tres" type="StyleBox" id=3]
+[ext_resource path="res://themse/button_pressed.tres" type="StyleBox" id=4]
+[ext_resource path="res://themse/buttons_normal.tres" type="StyleBox" id=5]
+[ext_resource path="res://fonts/pirulen/pirulen_16.fnt" type="Font" id=6]
+[ext_resource path="res://sfx/click_converted.wav" type="Sample" id=7]
+[ext_resource path="res://music/menu_music_1_converted.wav" type="Sample" id=8]
+[ext_resource path="res://music/menu_music_2_converted.wav" type="Sample" id=9]
+[ext_resource path="res://sprites/fire_icon.png" type="Texture" id=10]
+[ext_resource path="res://fonts/sunvox-1.9.1/exo_light_16.fnt" type="Font" id=11]
+[ext_resource path="res://sprites/water_icon.png" type="Texture" id=12]
+[ext_resource path="res://sprites/earth_icon.png" type="Texture" id=13]
+[ext_resource path="res://sprites/air_icon.png" type="Texture" id=14]
+[ext_resource path="res://fonts/pirulen/pirulen_32.fnt" type="Font" id=15]
 
 [sub_resource type="SampleLibrary" id=1]
 
-samples/menu_music_1 = { "db":-10.0, "pitch":1.0, "sample":ExtResource( 5 ) }
-samples/menu_music_2 = { "db":-10.0, "pitch":1.0, "sample":ExtResource( 6 ) }
-samples/click = { "db":0.0, "pitch":1.0, "sample":ExtResource( 4 ) }
+samples/menu_music_1 = { "db":-10.0, "pitch":1.0, "sample":ExtResource( 8 ) }
+samples/click = { "db":0.0, "pitch":1.0, "sample":ExtResource( 7 ) }
+samples/menu_music_2 = { "db":-10.0, "pitch":1.0, "sample":ExtResource( 9 ) }
 
 [node name="main_menu" type="Node2D"]
 
@@ -63,7 +66,10 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-custom_fonts/font = ExtResource( 3 )
+custom_styles/hover = ExtResource( 3 )
+custom_styles/pressed = ExtResource( 4 )
+custom_styles/normal = ExtResource( 5 )
+custom_fonts/font = ExtResource( 6 )
 toggle_mode = false
 text = "Start game"
 flat = false
@@ -78,7 +84,10 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-custom_fonts/font = ExtResource( 3 )
+custom_styles/hover = ExtResource( 3 )
+custom_styles/pressed = ExtResource( 4 )
+custom_styles/normal = ExtResource( 5 )
+custom_fonts/font = ExtResource( 6 )
 toggle_mode = false
 text = "exit"
 flat = false
@@ -104,8 +113,7 @@ default/chorus_send = 0.0
 
 transform/pos = Vector2( 130, 488 )
 transform/rot = 0.85505
-transform/scale = Vector2( 1, 1 )
-texture = ExtResource( 7 )
+texture = ExtResource( 10 )
 hframes = 2
 
 [node name="fire_text" type="Label" parent="."]
@@ -117,7 +125,7 @@ margin/bottom = 454.0
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
-custom_fonts/font = ExtResource( 8 )
+custom_fonts/font = ExtResource( 11 )
 text = "Fire"
 percent_visible = 1.0
 lines_skipped = 0
@@ -126,8 +134,7 @@ max_lines_visible = -1
 [node name="water" type="Sprite" parent="."]
 
 transform/pos = Vector2( 300, 488 )
-transform/scale = Vector2( 1, 1 )
-texture = ExtResource( 9 )
+texture = ExtResource( 12 )
 hframes = 2
 
 [node name="water_text" type="Label" parent="."]
@@ -139,7 +146,7 @@ margin/bottom = 454.0
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
-custom_fonts/font = ExtResource( 8 )
+custom_fonts/font = ExtResource( 11 )
 text = "Water"
 percent_visible = 1.0
 lines_skipped = 0
@@ -148,7 +155,7 @@ max_lines_visible = -1
 [node name="earth" type="Sprite" parent="."]
 
 transform/pos = Vector2( 473.41, 488 )
-texture = ExtResource( 10 )
+texture = ExtResource( 13 )
 hframes = 2
 
 [node name="earth_text" type="Label" parent="."]
@@ -168,7 +175,7 @@ max_lines_visible = -1
 [node name="air" type="Sprite" parent="."]
 
 transform/pos = Vector2( 686.989, 488 )
-texture = ExtResource( 11 )
+texture = ExtResource( 14 )
 hframes = 2
 
 [node name="air_text" type="Label" parent="."]
@@ -180,7 +187,7 @@ margin/bottom = 454.0
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
-custom_fonts/font = ExtResource( 8 )
+custom_fonts/font = ExtResource( 11 )
 text = "Air"
 percent_visible = 1.0
 lines_skipped = 0
@@ -195,7 +202,7 @@ margin/bottom = 570.0
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
-custom_fonts/font = ExtResource( 8 )
+custom_fonts/font = ExtResource( 11 )
 text = "A Game By Crazy046 Made over 2 days for Ludum Dare 35"
 percent_visible = 1.0
 lines_skipped = 0
@@ -210,7 +217,7 @@ margin/bottom = 191.0
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
-custom_fonts/font = ExtResource( 12 )
+custom_fonts/font = ExtResource( 15 )
 text = "Instructions"
 percent_visible = 1.0
 lines_skipped = 0
@@ -226,7 +233,7 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-custom_fonts/normal_font = ExtResource( 8 )
+custom_fonts/normal_font = ExtResource( 11 )
 bbcode/enabled = true
 bbcode/bbcode = "W A S D       To move\n1 2 3 4          To Shape Shift\nFire:\n\tArea attack, but self harms\nWater:\n\tGush forward huting enemies\nEarth:\n\tTurn to stone healing, and invulnerable to attacks\nAir:\n\tTurn into a gush of wind navigating the battle field"
 visible_characters = -1

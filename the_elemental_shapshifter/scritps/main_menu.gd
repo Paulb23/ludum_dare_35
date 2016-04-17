@@ -20,4 +20,4 @@ func start_game():
 
 func exit():
 	get_node("SamplePlayer").play("click")	
-	get_tree().quit()
+	get_tree().quit()	

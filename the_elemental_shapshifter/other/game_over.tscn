@@ -1,14 +1,17 @@
-[gd_scene load_steps=7 format=1]
+[gd_scene load_steps=10 format=1]
 
 [ext_resource path="res://scritps/game_over.gd" type="Script" id=1]
 [ext_resource path="res://fonts/pirulen/pirulen_64.fnt" type="Font" id=2]
-[ext_resource path="res://fonts/pirulen/pirulen_16.fnt" type="Font" id=3]
-[ext_resource path="res://fonts/pirulen/pirulen_32.fnt" type="Font" id=4]
-[ext_resource path="res://sfx/click_converted.wav" type="Sample" id=5]
+[ext_resource path="res://themse/button_hovered.tres" type="StyleBox" id=3]
+[ext_resource path="res://themse/button_pressed.tres" type="StyleBox" id=4]
+[ext_resource path="res://themse/buttons_normal.tres" type="StyleBox" id=5]
+[ext_resource path="res://fonts/pirulen/pirulen_16.fnt" type="Font" id=6]
+[ext_resource path="res://fonts/pirulen/pirulen_32.fnt" type="Font" id=7]
+[ext_resource path="res://sfx/click_converted.wav" type="Sample" id=8]
 
 [sub_resource type="SampleLibrary" id=1]
 
-samples/click = { "db":0.0, "pitch":1.0, "sample":ExtResource( 5 ) }
+samples/click = { "db":0.0, "pitch":1.0, "sample":ExtResource( 8 ) }
 
 [node name="game_over" type="Node2D"]
 
@@ -39,7 +42,10 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-custom_fonts/font = ExtResource( 3 )
+custom_styles/hover = ExtResource( 3 )
+custom_styles/pressed = ExtResource( 4 )
+custom_styles/normal = ExtResource( 5 )
+custom_fonts/font = ExtResource( 6 )
 toggle_mode = false
 text = "Main Menu"
 flat = false
@@ -54,7 +60,10 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-custom_fonts/font = ExtResource( 3 )
+custom_styles/hover = ExtResource( 3 )
+custom_styles/pressed = ExtResource( 4 )
+custom_styles/normal = ExtResource( 5 )
+custom_fonts/font = ExtResource( 6 )
 toggle_mode = false
 text = "Restart"
 flat = false
@@ -69,7 +78,10 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-custom_fonts/font = ExtResource( 3 )
+custom_styles/hover = ExtResource( 3 )
+custom_styles/pressed = ExtResource( 4 )
+custom_styles/normal = ExtResource( 5 )
+custom_fonts/font = ExtResource( 6 )
 toggle_mode = false
 text = "exit"
 flat = false
@@ -83,7 +95,7 @@ margin/bottom = 236.0
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
-custom_fonts/font = ExtResource( 4 )
+custom_fonts/font = ExtResource( 7 )
 text = "Round"
 percent_visible = 1.0
 lines_skipped = 0
@@ -98,7 +110,7 @@ margin/bottom = 280.0
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
-custom_fonts/font = ExtResource( 4 )
+custom_fonts/font = ExtResource( 7 )
 text = "1"
 percent_visible = 1.0
 lines_skipped = 0
@@ -113,7 +125,7 @@ margin/bottom = 236.0
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
-custom_fonts/font = ExtResource( 4 )
+custom_fonts/font = ExtResource( 7 )
 text = "Score"
 percent_visible = 1.0
 lines_skipped = 0
@@ -128,7 +140,7 @@ margin/bottom = 280.0
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
-custom_fonts/font = ExtResource( 4 )
+custom_fonts/font = ExtResource( 7 )
 text = "1"
 percent_visible = 1.0
 lines_skipped = 0
