@@ -22,6 +22,9 @@ func _ready():
 	get_node("reduce_air_cooldown").connect("pressed", self, "reduce_air_cooldown")
 	get_node("increase_air_duration").connect("pressed", self, "increase_air_duration")
 	
+	points = 6
+	update_points()
+	
 func start_round():
 	get_parent().round_start()
 	
@@ -127,49 +130,3 @@ func increase_air_duration():
 func update_points():
 	points -= 1
 	get_node("points").set_text("Points Left : " + str(points))
-
-func show_shop():
-	get_node("start_round_button").show()
-	get_node("upgrade_health").show()
-	get_node("upgrade_speed").show()
-	get_node("upgrade_fire_damage").show()
-	get_node("reduce_fire_self_damage").show()
-	get_node("reduce_fire_cooldown").show()
-	get_node("increase_fire_duration").show()
-	get_node("upgrade_water_damage").show()
-	get_node("increace_water_speed").show()
-	get_node("reduce_water_cooldown").show()
-	get_node("increace_water_duration").show()
-	get_node("increase_earth_self_heal").show()
-	get_node("reduce_earth_cooldown").show()
-	get_node("increase_earth_duartion").show()
-	get_node("upgrade_air_damage").show()
-	get_node("increase_air_speed").show()
-	get_node("reduce_air_cooldown").show()
-	get_node("increase_air_duration").show()
-	get_node("points").show()
-	
-	points = 6
-	update_points()
-	
-	
-func hide_shop():
-	get_node("upgrade_health").hide()
-	get_node("start_round_button").hide()
-	get_node("upgrade_speed").hide()
-	get_node("upgrade_fire_damage").hide()
-	get_node("reduce_fire_self_damage").hide()
-	get_node("reduce_fire_cooldown").hide()
-	get_node("increase_fire_duration").hide()
-	get_node("upgrade_water_damage").hide()
-	get_node("increace_water_speed").hide()
-	get_node("reduce_water_cooldown").hide()
-	get_node("increace_water_duration").hide()
-	get_node("increase_earth_self_heal").hide()
-	get_node("reduce_earth_cooldown").hide()
-	get_node("increase_earth_duartion").hide()
-	get_node("upgrade_air_damage").hide()
-	get_node("increase_air_speed").hide()
-	get_node("reduce_air_cooldown").hide()
-	get_node("increase_air_duration").hide()
-	get_node("points").hide()

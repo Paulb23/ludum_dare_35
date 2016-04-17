@@ -2,6 +2,9 @@ extends Node2D
 
 const LEVEL_TIME = 5
 
+var shop = load("res://other/shop.tscn")
+var shop_instance
+
 var enemies_scenes = [
 	load("res://characters/enemy/basic_meele_enemy.tscn"),
 	load("res://characters/enemy/basic_range_enemy.tscn"),
@@ -48,11 +51,10 @@ func _fixed_process(delta):
 func round_start():
 	get_node("gui").show_gui()
 	get_node("Player").set_paused(false)
-	get_node("between_rounds_shop").hide_shop();
 	in_round = true
 	max_enemies = 5 * current_round
 	get_node("Player").health = get_node("Player").max_health
-	
+	shop_instance.queue_free()
 	if max_enemies <= 0:
 		max_enemies = 5 
 	if max_enemies >= 20:
@@ -72,7 +74,8 @@ func timer_end():
 	current_round += 1
 	get_node("gui").hide_gui()
 	get_node("Player").set_paused(true)
-	get_node("between_rounds_shop").show_shop();
+	shop_instance = shop.instance()
+	add_child(shop_instance)
 	if enemies.size() > 0:
 		for i in range(0, enemies.size()):
 			if enemies[i].get_ref():
