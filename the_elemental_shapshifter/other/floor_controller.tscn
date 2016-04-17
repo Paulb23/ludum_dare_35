@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=1]
+[gd_scene load_steps=16 format=1]
 
 [ext_resource path="res://scritps/game_controller.gd" type="Script" id=1]
 [ext_resource path="res://tiles/tiles.tres" type="TileSet" id=2]
@@ -9,9 +9,10 @@
 [ext_resource path="res://sprites/water_icon.png" type="Texture" id=7]
 [ext_resource path="res://sprites/earth_icon.png" type="Texture" id=8]
 [ext_resource path="res://sprites/air_icon.png" type="Texture" id=9]
-[ext_resource path="res://music/music_1_converted.wav" type="Sample" id=10]
-[ext_resource path="res://music/music_2_converted.wav" type="Sample" id=11]
-[ext_resource path="res://music/music_3_converted.wav" type="Sample" id=12]
+[ext_resource path="res://other/bar.gd" type="Script" id=10]
+[ext_resource path="res://music/music_1_converted.wav" type="Sample" id=11]
+[ext_resource path="res://music/music_2_converted.wav" type="Sample" id=12]
+[ext_resource path="res://music/music_3_converted.wav" type="Sample" id=13]
 
 [sub_resource type="NavigationPolygon" id=1]
 
@@ -21,9 +22,9 @@ outlines = [ Vector2Array( 31.9881, 31.9325, 767.87, 31.9835, 767.926, 511.953, 
 
 [sub_resource type="SampleLibrary" id=2]
 
-samples/music_1 = { "db":-10.0, "pitch":1.0, "sample":ExtResource( 10 ) }
-samples/music_3 = { "db":-10.0, "pitch":1.0, "sample":ExtResource( 12 ) }
-samples/music_2 = { "db":-10.0, "pitch":1.0, "sample":ExtResource( 11 ) }
+samples/music_1 = { "db":-10.0, "pitch":1.0, "sample":ExtResource( 11 ) }
+samples/music_2 = { "db":-10.0, "pitch":1.0, "sample":ExtResource( 12 ) }
+samples/music_3 = { "db":-10.0, "pitch":1.0, "sample":ExtResource( 13 ) }
 
 [node name="FloorController" type="Node2D"]
 
@@ -89,19 +90,11 @@ transform/pos = Vector2( 500, 563 )
 texture = ExtResource( 9 )
 hframes = 2
 
-[node name="health_text" type="Label" parent="gui"]
+[node name="health_bar" type="Node2D" parent="gui"]
 
-margin/left = 370.0
-margin/top = 520.0
-margin/right = 410.0
-margin/bottom = 533.0
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-text = "100"
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
+transform/pos = Vector2( 368.226, 523.204 )
+transform/scale = Vector2( 5.28019, 0.186604 )
+script/script = ExtResource( 10 )
 
 [node name="clock" type="Label" parent="gui"]
 

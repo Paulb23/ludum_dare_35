@@ -18,8 +18,10 @@ func _fixed_process(delta):
 	var player = get_parent().get_node("Player")
 	
 	if (player):
-		get_node("health_text").set_text(str(player.get_health()))
-		
+		var decrease = player.max_health - player.health
+		var percent_decreace = float(decrease) / float(player.max_health)
+		get_node("health_bar").set_percentage((float(1.00) - (float(percent_decreace))))
+	
 		if player.get_node("fire_cooldown").get_time_left() == 0:
 			get_node("fire_sprite").set_frame(0)
 		else:
@@ -42,7 +44,7 @@ func _fixed_process(delta):
 		
 func hide_gui():
 	get_node("clock").hide()
-	get_node("health_text").hide()
+	get_node("health_bar").hide()
 	get_node("fire_sprite").hide()
 	get_node("water_sprite").hide()
 	get_node("earth_sprite").hide()
@@ -51,7 +53,7 @@ func hide_gui():
 	
 func show_gui():
 	get_node("clock").show()
-	get_node("health_text").show()
+	get_node("health_bar").show()
 	get_node("fire_sprite").show()
 	get_node("water_sprite").show()
 	get_node("earth_sprite").show()
