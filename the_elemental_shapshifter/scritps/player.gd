@@ -328,6 +328,7 @@ func set_paused(paused):
 func hit(dmg):
 	if spell_to_cast == MODE_EARTH:
 		return
+	get_node("SamplePlayer").play("hit")
 	health -= dmg
 	
 	if health <= 0.0:

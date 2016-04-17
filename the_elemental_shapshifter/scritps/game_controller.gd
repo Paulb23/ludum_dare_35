@@ -1,11 +1,13 @@
 extends Node2D
 
-const LEVEL_TIME = 5
+var LEVEL_TIME = 180
 
 var shop = load("res://other/shop.tscn")
 var pause = load("res://other/pause.tscn")
+var game_over = load("res://other/game_over.tscn")
 var shop_instance
 var pause_instance
+var game_over_instance
 
 var enemies_scenes = [
 	load("res://characters/enemy/basic_meele_enemy.tscn"),
@@ -32,6 +34,14 @@ func _ready():
 	
 	map_width -= 2
 	map_height -= 4
+	timer_end()
+	
+func restart():
+	game_over_instance.queue_free()
+	max_enemies = 5
+	spawned_enemies = 0
+	in_round = false
+	current_round = -1
 	timer_end()
 	
 func _fixed_process(delta):
@@ -69,6 +79,9 @@ func round_start():
 	
 func player_died():
 	timer_end()
+	shop_instance.queue_free()
+	game_over_instance = game_over.instance()
+	add_child(game_over_instance)
 	
 func timer_start():
 	get_node("level_timer").set_wait_time(LEVEL_TIME)
