@@ -16,6 +16,7 @@ var speed = 10
 var time_to_move = 15;
 var moving = false
 var facing = 1
+var worth = 5
 
 var damage = 10;
 var attack_speed = 10.0;
@@ -136,5 +137,5 @@ func hit(dmg):
 	
 	if health <= 0.0 && not dead:
 		dead = true
-		get_parent().get_parent().kill_enemy();
+		get_parent().get_parent().kill_enemy(worth);
 		self.queue_free()

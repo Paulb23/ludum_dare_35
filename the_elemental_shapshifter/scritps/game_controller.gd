@@ -39,6 +39,7 @@ func _ready():
 	timer_end()
 	
 func restart():
+	game_over_instance.hide_screen()
 	game_over_instance.queue_free()
 	max_enemies = 5
 	spawned_enemies = 0
@@ -109,8 +110,8 @@ func timer_end():
 			if enemies[i].get_ref():
 				enemies[i].get_ref().queue_free()
 	
-func kill_enemy():
-	score += 1
+func kill_enemy(p_score):
+	score += p_score
 	spawned_enemies -= 1;
 	
 func game_pause():

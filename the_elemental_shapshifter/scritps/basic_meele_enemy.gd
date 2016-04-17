@@ -19,6 +19,7 @@ var facing = 1
 
 var damage = 1;
 var attack_speed = 1.0;
+var worth = 1
 
 var max_health = 100
 var health = 100
@@ -138,5 +139,5 @@ func hit(dmg):
 	
 	if health <= 0.0 && not dead:
 		dead = true
-		get_parent().get_parent().kill_enemy();
+		get_parent().get_parent().kill_enemy(worth);
 		self.queue_free()
