@@ -35,6 +35,10 @@ func _ready():
 	timer_end()
 	
 func _fixed_process(delta):
+	if !get_node("SamplePlayer").is_active():
+		var track = (randi() % 3) + 1
+		get_node("SamplePlayer").play("music_" + str(track))
+	
 	if in_round:
 		if spawned_enemies < max_enemies && get_node("spawn_timer").get_time_left() == 0:
 			var x = (randi() % map_width) + 1
