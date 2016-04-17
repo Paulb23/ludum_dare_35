@@ -3,7 +3,9 @@ extends Node2D
 const LEVEL_TIME = 5
 
 var shop = load("res://other/shop.tscn")
+var pause = load("res://other/pause.tscn")
 var shop_instance
+var pause_instance
 
 var enemies_scenes = [
 	load("res://characters/enemy/basic_meele_enemy.tscn"),
@@ -83,3 +85,17 @@ func timer_end():
 	
 func kill_enemy():
 	spawned_enemies -= 1;
+	
+func game_pause():
+	if !in_round:
+		shop_instance.hide_shop()
+	
+	pause_instance = pause.instance()
+	add_child(pause_instance)
+	get_tree().set_pause(true)
+	
+func game_unpause():
+	if !in_round:
+		shop_instance.show_shop()
+	pause_instance.queue_free()
+	get_tree().set_pause(false)

@@ -2,7 +2,7 @@
 
 [ext_resource path="res://scritps/between_round_shop.gd" type="Script" id=1]
 
-[node name="between_rounds_shop" type="Node2D"]
+[node name="shop" type="Node2D"]
 
 transform/pos = Vector2( 146.261, -7.75625 )
 script/script = ExtResource( 1 )

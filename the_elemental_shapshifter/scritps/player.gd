@@ -68,8 +68,14 @@ func _ready():
 	get_node("Timer").connect("timeout", self, "timer_end")
 	get_node("Area2D").connect("body_enter", self, "collision")
 	get_node("Area2D").connect("body_exit", self, "collision_end")
+	set_process_input(true)
+	
+func _input(event):
+	if Input.is_action_pressed("pause") :
+		get_parent().game_pause()
 	
 func _fixed_process(delta):
+
 	
 	if current_mode == MODE_PAUSED:
 		return
