@@ -17,3 +17,17 @@ func restart():
 func exit():
 	get_node("SamplePlayer").play("click")	
 	get_tree().quit()
+	
+func hide_screen():
+	get_node("title").hide()
+	get_node("main_menu").hide()
+	get_node("restart").hide()
+	get_node("exit").hide()
+	get_node("score").hide()
+	
+func show_screen():
+	get_node("title").show()
+	get_node("main_menu").show()
+	get_node("restart").show()
+	get_node("exit").show()
+	get_node("score").show()

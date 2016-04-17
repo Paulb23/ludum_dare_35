@@ -13,6 +13,7 @@ func _fixed_process(delta):
 	if current_mode == MODE_HIDDEN:
 		return
 	
+	get_node("score").set_text(str(get_parent().score))
 	get_node("clock").set_text(str(int(get_parent().get_node("level_timer").get_time_left())))
 	
 	var player = get_parent().get_node("Player")
@@ -43,6 +44,8 @@ func _fixed_process(delta):
 			get_node("air_sprite").set_frame(1)
 		
 func hide_gui():
+	get_node("total_score").hide()
+	get_node("score").hide()
 	get_node("time_left").hide()
 	get_node("clock").hide()
 	get_node("health_bar").hide()
@@ -53,6 +56,8 @@ func hide_gui():
 	current_mode = MODE_HIDDEN
 	
 func show_gui():
+	get_node("total_score").show()
+	get_node("score").show()
 	get_node("time_left").show()
 	get_node("clock").show()
 	get_node("health_bar").show()

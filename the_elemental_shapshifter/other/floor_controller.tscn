@@ -67,6 +67,7 @@ collision/margin = 0.08
 [node name="gui" type="Node2D" parent="."]
 
 script/script = ExtResource( 5 )
+__meta__ = { "_editor_collapsed":true }
 
 [node name="fire_sprite" type="Sprite" parent="gui"]
 
@@ -125,6 +126,36 @@ focus/stop_mouse = true
 size_flags/horizontal = 2
 custom_fonts/font = ExtResource( 12 )
 text = "180"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="total_score" type="Label" parent="gui"]
+
+margin/left = 50.0
+margin/top = 525.0
+margin/right = 129.0
+margin/bottom = 545.0
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+custom_fonts/font = ExtResource( 11 )
+text = "Score:"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="score" type="Label" parent="gui"]
+
+margin/left = 27.0
+margin/top = 555.0
+margin/right = 67.0
+margin/bottom = 587.0
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+custom_fonts/font = ExtResource( 12 )
+text = "0"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
