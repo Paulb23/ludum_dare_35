@@ -42,7 +42,7 @@ func upgrade_speed():
 	if points <= 0:
 		get_node("SamplePlayer").play("error_click")
 		return
-	get_parent().get_node("Player").time_to_move += 2
+	get_parent().get_node("Player").default_move_time += 2
 	update_points()
 	
 func upgrade_fire_damage():

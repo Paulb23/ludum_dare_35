@@ -92,6 +92,7 @@ func round_start():
 	in_round = true
 	max_enemies = 5 * current_round
 	get_node("Player").health = get_node("Player").max_health
+	get_node("Player").time_to_move = get_node("Player").default_move_time
 	shop_instance.queue_free()
 	if current_round == 0:
 		LEVEL_TIME = 60
