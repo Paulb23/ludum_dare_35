@@ -1,5 +1,7 @@
 extends Node2D
 
+var instructions
+
 func _ready():
 	seed(OS.get_unix_time())
 	get_node("start_game").connect("pressed", self, "start_game")
@@ -10,6 +12,7 @@ func _fixed_process(delta):
 	if !get_node("SamplePlayer").is_active():
 		var track = (randi() % 2) + 1
 		get_node("SamplePlayer").play("menu_music_" + str(track))
+	
 	
 func start_game():
 	get_node("SamplePlayer").play("click")	
