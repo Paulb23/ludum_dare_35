@@ -90,11 +90,19 @@ func round_start():
 	max_enemies = 5 * current_round
 	get_node("Player").health = get_node("Player").max_health
 	shop_instance.queue_free()
+	if current_round == 0:
+		LEVEL_TIME = 60
+	else:
+		LEVEL_TIME = 60 * current_round
+		
+	if LEVEL_TIME > 180:
+		LEVEL_TIME = 180
+	
 	spawned_enemies = 0
 	if max_enemies <= 0:
 		max_enemies = 5 
-	if max_enemies >= 20:
-		max_enemies = 20
+	if max_enemies >= 50: # why not :P
+		max_enemies = 50
 	timer_start()
 	
 func player_died():
